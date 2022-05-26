@@ -1,7 +1,7 @@
-# GPCCExperiments
+# GPCCPaper
 
 
-## Results - all use matern32 kernel
+## Experiments - all use matern32 kernel
 
 ### Experiment with synthetic data
 
