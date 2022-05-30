@@ -40,7 +40,7 @@ runme("pg0026"; maxiter=1, numberofrestarts=1, delays=LinRange(0,100, 2*nworkers
 
 function properrun()
 
-    for source in ["pg0026"]
+    for source in ["PG0804", "PG0844"]
 
         # Skip datasets that do not contain hb
         if sum(get_indices_for_con_and_hb(readdataset(source = source)[4])) < 2
@@ -49,7 +49,7 @@ function properrun()
 
         end
 
-        local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 7, delays = -800:0.05:1200.0)
+        local RESULTS = runme(source, maxiter = 3000, numberofrestarts = 5, delays = -800:0.05:1200.0)
 
         JLD2.save("results_"*source*".jld2", "results", RESULTS)
 
