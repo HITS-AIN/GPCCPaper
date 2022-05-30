@@ -49,7 +49,7 @@ function properrun()
 
         end
 
-        local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 10, delays = -800:0.1:1000.0)
+        local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 7, delays = -800:0.05:1200.0)
 
         JLD2.save("results_"*source*".jld2", "results", RESULTS)
 
