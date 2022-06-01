@@ -43,7 +43,7 @@ function properrun(rhomax)
 
         local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 10, rhomax = rhomax)
 
-        JLD2.save("results_"*source*@printf("_%.2f_", rhomax)*".jld2", "results", RESULTS)
+        JLD2.save("results_"*source*@sprintf("_%.2f_", rhomax)*".jld2", "results", RESULTS)
 
     end
 
