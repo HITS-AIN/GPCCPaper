@@ -9,7 +9,7 @@ function formdelays(source)
 
     τmax = maximum(maximum.(tobs)) - minimum(minimum.(tobs))
 
-    τ = 0.0:0.1:1.05*τmax
+    τ = 0.0:0.1:τmax
 
     L = length(tobs)
 
@@ -37,7 +37,7 @@ runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10)
 runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10)
 
 
-function properrun(rhomax)
+function properrun(rhomax=100.0)
 
     for source in ["3C120", "Mrk335", "Mrk1501", "Mrk6", "PG2130099"]
 
