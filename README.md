@@ -38,9 +38,9 @@ PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630|
 
 ### 3C120
 
-![3C120](results/VirialMass/3C120_delays.svg)
+![3C120](results/VirialMass/3C120_delays.png)
 
-![3C120](results/VirialMass/3C120_align_23.39.svg)
+![3C120](results/VirialMass/3C120_align_23.39.png)
 
 ### Mrk6
 
