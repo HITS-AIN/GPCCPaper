@@ -23,11 +23,13 @@ PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630|
 
 ### Mrk335
 
-![Mrk335](results/VirialMass/Mrk335_delays.png)
+![Mrk335](results/Virial/Mrk335_delays.png)
 
-![Mrk335](results/VirialMass/Mrk335_align_13.15.png)
+![Mrk335](results/Virial/Mrk335_align_13.15.png)
 
-![Mrk335](results/VirialMass/Mrk335_align_85.42.png)
+![Mrk335](results/Virial/Mrk335_align_85.42.png)
+
+![Mrk335](results/Virial/Mrk335_align_104.7.png)
 
 
 ### Mrk1501
