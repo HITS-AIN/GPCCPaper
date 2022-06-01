@@ -33,15 +33,15 @@ end
 
 
 # warmup
-runme("3C120"; maxiter=1, numberofrestarts=1)
-runme("3C120"; maxiter=1, numberofrestarts=1)
+runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10)
+runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10)
 
 
 function properrun(rhomax)
 
     for source in ["3C120", "Mrk335", "Mrk1501", "Mrk6", "PG2130099"]
 
-        local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 10)
+        local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 10, rhomax = rhomax)
 
         JLD2.save("results_"*source*@printf("_%.2f_", rhomax)*".jld2", "results", RESULTS)
 
