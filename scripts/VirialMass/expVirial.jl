@@ -41,7 +41,7 @@ function properrun(rhomax=100.0)
 
     for source in ["3C120", "Mrk335", "Mrk1501", "Mrk6", "PG2130099"]
 
-        local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 10, rhomax = rhomax)
+        local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 5, rhomax = rhomax)
 
         JLD2.save("results_"*source*@sprintf("_%.2f_", rhomax)*".jld2", "results", RESULTS)
 
