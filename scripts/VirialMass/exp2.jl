@@ -19,7 +19,7 @@ function formdelays(source)
 
 end
 
-function runme(source; maxiter=1, numberofrestarts=1)
+function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax)
 
     tobs, yobs, σobs = readdataset(source = source);
 
@@ -27,7 +27,7 @@ function runme(source; maxiter=1, numberofrestarts=1)
 
     @printf("Trying out %d delay combinations in parallel\n", length(delays))
 
-    @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; rhomax=100.0, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;collect(d)], kernel = GPCC.matern32)), delays)
+    @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; rhomax=rhomax, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;collect(d)], kernel = GPCC.matern32)), delays)
 
 end
 
@@ -37,13 +37,13 @@ runme("3C120"; maxiter=1, numberofrestarts=1)
 runme("3C120"; maxiter=1, numberofrestarts=1)
 
 
-function properrun()
+function properrun(rhomax)
 
     for source in ["3C120", "Mrk335", "Mrk1501", "Mrk6", "PG2130099"]
 
         local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 10)
 
-        JLD2.save("results_"*source*".jld2", "results", RESULTS)
+        JLD2.save("results_"*source*@printf("_%.2f_", rhomax)*".jld2", "results", RESULTS)
 
     end
 
