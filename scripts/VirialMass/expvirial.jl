@@ -27,7 +27,7 @@ function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = 
 
     @printf("Trying out %d delay combinations in parallel\n", length(delays))
 
-    @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; rhomax=rhomax, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;collect(d)], kernel = GPCC.matern32)), delays)
+    @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; rhomax=rhomax, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;collect(d)], kernel = kernel)), delays)
 
 end
 
