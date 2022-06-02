@@ -21,7 +21,7 @@ end
 
 function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = kernel)
 
-    tobs, yobs, σobs = readdataset(source = source);
+    tobs, yobs, σobs, = readdataset(source = source);
 
     delays = formdelays(source)
 
