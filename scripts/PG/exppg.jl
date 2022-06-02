@@ -40,7 +40,9 @@ runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=OU(),  delays=
 
 function properrun(kernel, rhomax = 200)
 
-    for source in ["pg0026", "pg0052", "pg0953"]
+    for source in ["pg0953", "pg1211", "pg1226", "pg1229",
+          "pg1307", "pg1351", "pg1411", "pg1426",
+          "pg1613", "pg1617", "pg1700", "pg1704", "pg2130"]
 
         # Skip datasets that do not contain hb
         if sum(get_indices_for_con_and_hb(readdataset(source = source)[4])) < 2
