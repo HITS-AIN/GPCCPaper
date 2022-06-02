@@ -15,6 +15,7 @@ We generate synthetic data  that conform to the model with increasing noise leve
 
 ### PG0052
 ![PG0052](results/PG/pg0052_delays.png)
+![PG0052](results/PG/pg0052_aligned_58.png)
 
 
 ### PG0804
