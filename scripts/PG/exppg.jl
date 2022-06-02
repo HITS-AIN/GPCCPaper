@@ -17,7 +17,7 @@ end
 
 function runme(source; maxiter=1, numberofrestarts=1, delays = delays, kernel = kernel, rhomax= rhomax)
 
-    tobs, yobs, σobs, files = readdataset(source = source);
+    tobs, yobs, σobs, files, _minimumtime_ = readdataset(source = source);
 
     indices = get_indices_for_con_and_hb(files)
 
