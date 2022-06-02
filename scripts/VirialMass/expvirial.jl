@@ -33,8 +33,8 @@ end
 
 
 # warmup
-runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10)
-runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10)
+runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = OU())
+runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = OU())
 
 
 function properrun(kernel, rhomax=200.0)
