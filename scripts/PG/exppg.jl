@@ -34,8 +34,8 @@ end
 
 
 # warmup
-runme("pg0026"; maxiter=1, numberofrestarts=1, delays=LinRange(0,100, 2*nworkers()))
-runme("pg0026"; maxiter=1, numberofrestarts=1, delays=LinRange(0,100, 2*nworkers()))
+runme("pg0026"; maxiter=1, numberofrestarts=1, kernel=RBF(), delays=LinRange(0,100, 2*nworkers()))
+runme("pg0026"; maxiter=1, numberofrestarts=1, kernel=OU(),  delays=LinRange(0,100, 2*nworkers()))
 
 
 function properrun(kernel, rhomax = 200)
