@@ -10,10 +10,12 @@ We generate synthetic data  that conform to the model with increasing noise leve
 ![exp1](results/Synthetic/exp1_results.svg)
 
 ### PG0026
+Using OU kernel
 ![PG0026](results/PG/pg0026_delays.png)
 ![PG0026](results/PG/pg0026_delays_detail.png)
 
 ### PG0052
+Using OU kernel
 ![PG0052](results/PG/pg0052_delays.png)
 ![PG0052](results/PG/pg0052_aligned_58.png)
 
@@ -27,5 +29,8 @@ Using OU kernel
 ![PG0804](results/PG/pg0804_aligned_132.5.png)
 
 
-
+### PG0844
+Using OU kernel
+![pg0844](results/PG/pg0844_delays.png)
+![pg0844](results/PG/pg0844_delays_detail.png)
 
