@@ -9,6 +9,9 @@ We generate synthetic data  that conform to the model with increasing noise leve
 
 ![exp1](results/Synthetic/exp1_results.svg)
 
+### PG0026
+![PG0026](results/PG/pg0026_delays.png)
+![PG0026](results/PG/pg0026_delays_detail.png)
 
 ### PG0804
 
