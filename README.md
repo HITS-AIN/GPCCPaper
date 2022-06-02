@@ -14,9 +14,9 @@ We generate synthetic data  that conform to the model with increasing noise leve
 
 Using OU kernel
 
-![PG0804](results/PG/pg0804.svg)
+![PG0804](results/PG/pg0804_delays.svg)
 
-![PG0804](results/PG/pg0804_align_132.5.png)
+![PG0804](results/PG/pg0804_aligned_132.5.png)
 
 
 
