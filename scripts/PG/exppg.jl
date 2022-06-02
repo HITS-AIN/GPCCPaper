@@ -49,7 +49,7 @@ function properrun(kernel, rhomax = 200)
 
         end
 
-        local RESULTS = runme(source, maxiter = 3000, numberofrestarts = 5, delays = -800:0.05:1200.0, rhomax = rhomax)
+        local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 5, delays = -800:0.05:1200.0, rhomax = rhomax)
 
         JLD2.save("results_"*source*string(kernel)*".jld2", "results", RESULTS)
 
