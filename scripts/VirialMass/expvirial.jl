@@ -19,11 +19,9 @@ function formdelays(source)
 
 end
 
-function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = kernel)
+function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = kernel, delays = delays)
 
     tobs, yobs, σobs, = readdataset(source = source);
-
-    delays = formdelays(source)
 
     @printf("Trying out %d delay combinations in parallel\n", length(delays))
 
@@ -33,17 +31,19 @@ end
 
 
 # warmup
-runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = OU())
-runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = OU())
+runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = OU(), delays = LinRange(0.0, 10, 2*nworkers()))
+runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = OU(), delays = LinRange(0.0, 10, 2*nworkers()))
 
 
 function properrun(kernel, rhomax=200.0)
 
     for source in ["3C120", "Mrk335", "Mrk1501", "Mrk6", "PG2130099"]
 
-        local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 3, rhomax = rhomax, kernel = kernel)
+        delays = formdelays(source)
 
-        JLD2.save("results_"*source*@sprintf("_%.2f_", rhomax)*string(kernel)*".jld2", "results", RESULTS)
+        RESULTS = runme(source, maxiter = 2000, numberofrestarts = 3, rhomax = rhomax, kernel = kernel, delays = delays)
+
+        JLD2.save("results_"*source*@sprintf("_%.2f_", rhomax)*string(kernel)*".jld2", "cvresults", RESULTS, "delays", collect(delays))
 
     end
 
