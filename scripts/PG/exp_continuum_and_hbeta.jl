@@ -53,7 +53,7 @@ function properrun(kernel, rhomax = 500)
 
         end
 
-        delays = -2500:0.05:2500.0
+        delays = -10:0.1:2500.0
 
         local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 10, delays = delays, rhomax = rhomax)
 
