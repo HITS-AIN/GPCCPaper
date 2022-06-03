@@ -15,7 +15,7 @@ function get_indices_for_con_and_hb(f)
 end
 
 
-function runme(source; maxiter=1, numberofrestarts=1, delays = delays, kernel = kernel, rhomax= rhomax)
+function runme(source; maxiter = 1, numberofrestarts = 1, delays = delays, kernel = kernel, rhomax = rhomax)
 
     tobs, yobs, σobs, files, _minimumtime_ = readdataset(source = source);
 
@@ -34,15 +34,17 @@ end
 
 
 # warmup
-runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=RBF(), delays=LinRange(0,100, 2*nworkers()))
-runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=OU(),  delays=LinRange(0,100, 2*nworkers()))
+runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=RBF(), delays=LinRange(0, 100, 2*nworkers()))
+runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=OU(),  delays=LinRange(0, 100, 2*nworkers()))
 
 
 function properrun(kernel, rhomax = 200)
 
-    for source in ["pg0953", "pg1211", "pg1226", "pg1229",
-          "pg1307", "pg1351", "pg1411", "pg1426",
-          "pg1613", "pg1617", "pg1700", "pg1704", "pg2130"]
+    for source in ["pg0026", "pg0052", "pg0804", "pg0844",
+                   "pg0953", "pg1211", "pg1226", "pg1229",
+                   "pg1307", "pg1351", "pg1411", "pg1426",
+                   "pg1613", "pg1617", "pg1700", "pg1704",
+                   "pg2130"]
 
         # Skip datasets that do not contain hb
         if sum(get_indices_for_con_and_hb(readdataset(source = source)[4])) < 2
@@ -51,9 +53,11 @@ function properrun(kernel, rhomax = 200)
 
         end
 
-        local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 5, delays = -800:0.2:1200.0, rhomax = rhomax)
+        delays = -2500:0.2:2500.0
 
-        JLD2.save("results_"*source*string(kernel)*".jld2", "results", RESULTS)
+        local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 5, delays = delays, rhomax = rhomax)
+
+        JLD2.save("results_" * source * string(kernel) * ".jld2", "cvresults", RESULTS, "delays", collect(delays))
 
     end
 
