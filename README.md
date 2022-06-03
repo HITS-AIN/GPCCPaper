@@ -10,5 +10,5 @@ We generate synthetic data  that conform to the model with increasing noise leve
 ![exp1](plots/Synthetic/exp1_results.svg)
 
 
-[PG0026 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/3adba2f89536eb38ca4dd19119aca6873a80fcd9/plots/PG/pg0026delays.html)
-[PG0052 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/bd05889026e6c37bf2676056106335e4a54c6edd/plots/PG/pg0052delays.html)
+- [PG0026 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/3adba2f89536eb38ca4dd19119aca6873a80fcd9/plots/PG/pg0026delays.html)
+- [PG0052 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/bd05889026e6c37bf2676056106335e4a54c6edd/plots/PG/pg0052delays.html)
