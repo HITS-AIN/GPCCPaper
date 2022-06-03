@@ -9,7 +9,7 @@ function produceplot(filename::String, exportfilename = "")
 
     layout = Layout(title=filename)
 
-    fig = plot(scatter(x = data["delays"], y = prob), layout)
+    fig = PlotlyJS.plot(PlotlyJS.scatter(x = data["delays"], y = prob), layout)
 
     if ~isempty(exportfilename)
 
