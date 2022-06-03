@@ -5,9 +5,9 @@ function produceplot(filename::String, exportfilename = "")
 
     data = JLD2.load(filename)
 
-    layout = Layout(title=filename)
-
     prob = getprobabilities(data["cvresults"])
+
+    layout = Layout(title=filename)
 
     fig = plot(scatter(x = data["delays"], y = prob), layout)
 
@@ -28,7 +28,7 @@ end
 
 function exportallplots()
 
-    datasets = ["pg0026", "pg0052", "pg0804"]
+    datasets = ["pg0026", "pg0052", "pg0804", "pg0844", "pg0953"]
 
     for d in datasets
 
