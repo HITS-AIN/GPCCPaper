@@ -53,9 +53,9 @@ function properrun(kernel, rhomax = 200)
 
         end
 
-        delays = -2500:0.2:2500.0
+        delays = -2500:0.1:2500.0
 
-        local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 5, delays = delays, rhomax = rhomax)
+        local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 13, delays = delays, rhomax = rhomax)
 
         JLD2.save("results_" * source * string(kernel) * ".jld2", "cvresults", RESULTS, "delays", collect(delays))
 
