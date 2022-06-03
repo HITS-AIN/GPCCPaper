@@ -38,7 +38,7 @@ runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=RBF(), delays=
 runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=OU(),  delays=LinRange(0, 100, 2*nworkers()))
 
 
-function properrun(kernel, rhomax = 200)
+function properrun(kernel, rhomax = 500)
 
     for source in ["pg0026", "pg0052", "pg0804", "pg0844",
                    "pg0953", "pg1211", "pg1226", "pg1229",
@@ -55,7 +55,7 @@ function properrun(kernel, rhomax = 200)
 
         delays = -2500:0.1:2500.0
 
-        local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 13, delays = delays, rhomax = rhomax)
+        local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 10, delays = delays, rhomax = rhomax)
 
         JLD2.save("results_" * source * string(kernel) * ".jld2", "cvresults", RESULTS, "delays", collect(delays))
 

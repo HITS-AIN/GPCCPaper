@@ -36,9 +36,9 @@ function exportallplots()
 
         filename = "results_"*d*"OU().jld2"
 
-        out = d * "delays.html"
+        exportfilename = d * "delays.html"
 
-        produceplot(filename, exportfilename = out)
+        produceplot(filename, exportfilename)
 
     end
 
