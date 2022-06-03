@@ -28,7 +28,7 @@ end
 
 function exportallplots()
 
-    datasets = ["pg0026", "pg0052"]
+    datasets = ["pg0026", "pg0052", "pg0804"]
 
     for d in datasets
 
