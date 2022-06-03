@@ -21,6 +21,11 @@ function runme(source; maxiter = 1, numberofrestarts = 1, delays = delays, kerne
 
     indices = get_indices_for_con_and_hb(files)
 
+    @printf("Using only files\n")
+    for i in indices
+        display(files[i])
+    end
+
     # use subset of data that correspond to continuum and hb
     tobs = tobs[indices]
     yobs = yobs[indices]
@@ -28,7 +33,7 @@ function runme(source; maxiter = 1, numberofrestarts = 1, delays = delays, kerne
 
     @printf("Trying out %d delay combinations in parallel\n", length(delays))
 
-    @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; rhomax = rhomax, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;collect(d)], kernel = kernel)), delays)
+    @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; numberoffolds = 10, rhomax = rhomax, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;d], kernel = kernel)), delays)
 
 end
 
@@ -53,9 +58,9 @@ function properrun(kernel, rhomax = 500)
 
         end
 
-        delays = -10:0.1:2500.0
+        delays = 0:0.1:2500.0
 
-        local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 10, delays = delays, rhomax = rhomax)
+        local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 5, delays = delays, rhomax = rhomax)
 
         JLD2.save("results_" * source * string(kernel) * ".jld2", "cvresults", RESULTS, "delays", collect(delays))
 
