@@ -37,7 +37,7 @@ runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = OU(), delays
 
 function properrun(kernel, rhomax=500.0)
 
-    for source in ["3C120", "Mrk335", "Mrk1501", "Mrk6", "PG2130099"]
+    for source in listvirialdatasets()
 
         delays = formdelays(source)
 
