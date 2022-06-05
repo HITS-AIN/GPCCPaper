@@ -19,13 +19,13 @@ function formdelays(source)
 
 end
 
-function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = kernel, delays = delays)
+function runme(source; maxiter=1, initialrandom = 1, numberofrestarts=1, rhomax = rhomax, kernel = kernel, delays = delays)
 
     tobs, yobs, σobs, = readdataset(source = source);
 
     @printf("Trying out %d delay combinations in parallel\n", length(delays))
 
-    @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; rhomax=rhomax, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;collect(d)], kernel = kernel)), delays)
+    @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; initialrandom = initialrandom, rhomax=rhomax, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;collect(d)], kernel = kernel)), delays)
 
 end
 
