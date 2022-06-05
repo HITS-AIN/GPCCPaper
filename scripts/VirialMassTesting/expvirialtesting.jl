@@ -82,4 +82,18 @@ function properrun(kernel)
         JLD2.save("results_3.jld2", "cvresults", RESULTS, "delays", collect(delays))
 
     end
+
+    let
+
+        rhomax = 500.0
+
+        numberofrestarts = 33
+
+        initialrandom = 1
+
+        RESULTS = runme(source, maxiter = 3000, initialrandom = initialrandom, numberofrestarts = numberofrestarts, rhomax = rhomax, kernel = kernel, delays = delays)
+
+        JLD2.save("results_4.jld2", "cvresults", RESULTS, "delays", collect(delays))
+
+    end
 end
