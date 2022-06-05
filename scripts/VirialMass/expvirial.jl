@@ -41,7 +41,7 @@ function properrun(kernel, rhomax=500.0)
 
         delays = formdelays(source)
 
-        RESULTS = runme(source, maxiter = 2000, numberofrestarts = 3, rhomax = rhomax, kernel = kernel, delays = delays)
+        RESULTS = runme(source, maxiter = 3000, numberofrestarts = 13, rhomax = rhomax, kernel = kernel, delays = delays)
 
         JLD2.save("results_"*source*@sprintf("_%.2f_", rhomax)*string(kernel)*".jld2", "cvresults", RESULTS, "delays", collect(delays))
 
