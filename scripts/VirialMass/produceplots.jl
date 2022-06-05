@@ -20,7 +20,7 @@ function produceplot(filename::String, exportfilename = "")
 
     layout = Layout(title=filename)
 
-    fig = PlotlyJS.plot(PlotlyJS.scatter(x = data["delays"], y = prob), layout)
+    fig = PlotlyJS.plot(PlotlyJS.scatter(x = vec([only(d) for d in data["delays"]]), y = prob), layout)
 
     if ~isempty(exportfilename)
 
@@ -41,11 +41,11 @@ end
 
 function produceallplots(exporthtmlfigures = false)
 
-    for d in listpgdatasets()
+    for d in listvirialdatasets()
 
         display(d)
 
-        filename = "results_"*d*"OU().jld2"
+        filename = "results_"*d*"_500.00_OU().jld2"
 
         if exporthtmlfigures
 
