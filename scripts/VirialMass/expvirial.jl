@@ -45,7 +45,11 @@ function properrun(; kernel, rhomax = 300.0, Δt = 0.1, numberofrestarts = 13, n
 
         cvresults = runme(source, maxiter = 3000, numberofrestarts = numberofrestarts, rhomax = rhomax, kernel = kernel, delays = delays)
 
-        JLD2.save("results_" * name * source * @sprintf("_rho_%f_K_", rhomax) * string(kernel) * "_Dt_" * string(Δt) * ".jld2", "cvresults", cvresults, "delays", collect(delays))
+        JLD2.save("results_" * name * "_" * source *
+                  "_rho_" * string(rhomax) *
+                  "_K_"   * string(kernel) *
+                  "_Dt_"  * string(Δt)     *
+                  "_R_"   * string(numberofrestarts) * ".jld2", "cvresults", cvresults, "delays", collect(delays))
 
     end
 
