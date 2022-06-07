@@ -23,6 +23,8 @@ function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = 
 
     tobs, yobs, σobs, = readdataset(source = source);
 
+
+
     @printf("Trying out %d delay combinations in parallel with kernel %s\n", length(delays), string(kernel))
 
     @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; rhomax=rhomax, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;collect(d)], kernel = kernel)), delays)
