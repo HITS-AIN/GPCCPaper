@@ -37,7 +37,7 @@ runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, del
 
 function properrun(; kernel, rhomax = 1000.0, Δt = 0.1, numberofrestarts = 7, name = "")
 
-    for source in listvirialdatasets()
+    for source in ["3C120"] # listvirialdatasets()
 
         delays = formdelays(source, Δt)
 
