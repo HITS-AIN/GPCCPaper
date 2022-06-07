@@ -43,7 +43,7 @@ function properrun()
 
         local RESULTS = runme(source, maxiter = 2000, numberofrestarts = 10)
 
-        JLD2.save("results_"*source*".jld2", "results", RESULTS)
+        JLD2.save("results_"*source*".jld2", "results", RESULTS, "delays", formdelays(source))
 
     end
 
