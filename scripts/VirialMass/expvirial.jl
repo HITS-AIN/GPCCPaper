@@ -31,11 +31,11 @@ end
 
 
 # warmup
-runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = OU(), delays = LinRange(0.0, 10, 2*nworkers()))
-runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = OU(), delays = LinRange(0.0, 10, 2*nworkers()))
+runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
+runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
 
 
-function properrun(kernel, rhomax=500.0)
+function properrun(kernel, rhomax = 1000.0)
 
     for source in listvirialdatasets()
 
