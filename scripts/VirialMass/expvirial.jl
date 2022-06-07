@@ -37,15 +37,15 @@ runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, del
 runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
 
 
-function properrun(; kernel, rhomax = 1000.0, Δt = 0.1, numberofrestarts = 7, name = "")
+function properrun(; kernel, rhomax = 300.0, Δt = 0.1, numberofrestarts = 13, name = "")
 
-    for source in ["3C120"] # listvirialdatasets()
+    for source in listvirialdatasets()
 
         delays = formdelays(source, Δt)
 
-        RESULTS = runme(source, maxiter = 3000, numberofrestarts = numberofrestarts, rhomax = rhomax, kernel = kernel, delays = delays)
+        cvresults = runme(source, maxiter = 3000, numberofrestarts = numberofrestarts, rhomax = rhomax, kernel = kernel, delays = delays)
 
-        JLD2.save("results_" * name * source * @sprintf("_rho_%f_K_", rhomax) * string(kernel) * "_Dt_" * string(Δt) * ".jld2", "cvresults", RESULTS, "delays", collect(delays))
+        JLD2.save("results_" * name * source * @sprintf("_rho_%f_K_", rhomax) * string(kernel) * "_Dt_" * string(Δt) * ".jld2", "cvresults", cvresults, "delays", collect(delays))
 
     end
 
