@@ -1,7 +1,6 @@
 using Printf, GPCC, PlotlyJS, JLD2
 
 
-
 function getprob(cvresults)
 
     aux = mean.(cvresults)
@@ -12,7 +11,8 @@ function getprob(cvresults)
 
 end
 
-function produceplot(filename::String, exportfilename = "")
+
+function produceplot(filename::String, exporttohtml = false)
 
     data = JLD2.load(filename)
 
@@ -22,7 +22,9 @@ function produceplot(filename::String, exportfilename = "")
 
     fig = PlotlyJS.plot(PlotlyJS.scatter(x = vec([only(d) for d in data["delays"]]), y = prob), layout)
 
-    if ~isempty(exportfilename)
+    if exporttohtml
+
+        exportfilename = filename * "_delays_vs_prob.html"
 
         @printf("Exporting figure to file called %s\n", exportfilename)
 
@@ -35,28 +37,5 @@ function produceplot(filename::String, exportfilename = "")
     display(fig)
 
     nothing
-
-end
-
-
-function produceallplots(exporthtmlfigures = false)
-
-    for d in listvirialdatasets()
-
-        display(d)
-
-        filename = "results_"*d*"_500.00_OU().jld2"
-
-        if exporthtmlfigures
-
-            produceplot(filename, d * "delays.html")
-
-        else
-
-            produceplot(filename)
-
-        end
-
-    end
 
 end
