@@ -12,7 +12,7 @@ We generate synthetic data  that conform to the model with increasing noise leve
 ### Virial dataset
 
 - [3C120 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__3C120_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
-- [Mrk1501 with OU kernel]([https://rawcdn.githack.com/HITS-AIN/GPCCPaper/bd05889026e6c37bf2676056106335e4a54c6edd/plots/PG/pg0052delays.html](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__Mrk1501_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html))
-- [Mrk335 with OU kernel]([https://rawcdn.githack.com/HITS-AIN/GPCCPaper/6426e3dda6027ec066fc41bea2a2b1f989ddd39c/plots/PG/pg0804delays.html](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__Mrk335_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html))
-- [Mrk6 with OU kernel]([https://rawcdn.githack.com/HITS-AIN/GPCCPaper/8669e1062910eadd53fc494312148d57e498c834/plots/PG/pg0844delays.html](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__Mrk6_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html))
-- [PG2130099 with OU kernel]([https://rawcdn.githack.com/HITS-AIN/GPCCPaper/8669e1062910eadd53fc494312148d57e498c834/plots/PG/pg0953delays.html](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__PG2130099_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html))
+- [Mrk1501 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__Mrk1501_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
+- [Mrk335 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__Mrk335_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
+- [Mrk6 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__Mrk6_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
+- [PG2130099 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__PG2130099_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
