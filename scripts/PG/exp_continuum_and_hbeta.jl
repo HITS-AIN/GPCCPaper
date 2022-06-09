@@ -54,7 +54,7 @@ function properrun(; kernel, rhomax = 300.0, Δt = 0.1, numberofrestarts = 13, n
 
         end
 
-        delays = 0:Δt:2500.0
+        delays = -800.0:Δt:1200.0
 
         cvresults = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = numberofrestarts, delays = delays, rhomax = rhomax)
 
