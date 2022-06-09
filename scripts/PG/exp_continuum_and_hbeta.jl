@@ -15,7 +15,7 @@ function get_indices_for_con_and_hb(f)
 end
 
 
-function runme(source; maxiter = 1, numberofrestarts = 1, delays = delays, kernel = kernel, rhomax = rhomax)
+function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = kernel, delays = delays)
 
     tobs, yobs, σobs, files, _minimumtime_ = readdataset(source = source);
 
@@ -31,25 +31,21 @@ function runme(source; maxiter = 1, numberofrestarts = 1, delays = delays, kerne
     yobs = yobs[indices]
     σobs = σobs[indices]
 
-    @printf("Trying out %d delay combinations in parallel\n", length(delays))
+    @printf("Trying out %d delay combinations in parallel with kernel %s\n", length(delays), string(kernel))
 
-    @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; numberoffolds = 10, rhomax = rhomax, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;d], kernel = kernel)), delays)
+    @showprogress pmap(d->(@suppress performcv(tobs, yobs, σobs; rhomax=rhomax, iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;collect(d)], kernel = kernel)), delays)
 
 end
 
 
 # warmup
-runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=RBF(), delays=LinRange(0, 100, 2*nworkers()))
-runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=OU(),  delays=LinRange(0, 100, 2*nworkers()))
+runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=GPCC.OU, delays=LinRange(0, 100, 2*nworkers()))
+runme("pg0026"; rhomax=200, maxiter=1, numberofrestarts=1, kernel=GPCC.OU, delays=LinRange(0, 100, 2*nworkers()))
 
 
-function properrun(kernel, rhomax = 500)
+function properrun(; kernel, rhomax = 300.0, Δt = 0.1, numberofrestarts = 13, name = "")
 
-    for source in ["pg0026", "pg0052", "pg0804", "pg0844",
-                   "pg0953", "pg1211", "pg1226", "pg1229",
-                   "pg1307", "pg1351", "pg1411", "pg1426",
-                   "pg1613", "pg1617", "pg1700", "pg1704",
-                   "pg2130"]
+    for source in ["pg0804", "pg0844"] #listpgdatasets()
 
         # Skip datasets that do not contain hb
         if sum(get_indices_for_con_and_hb(readdataset(source = source)[4])) < 2
@@ -58,11 +54,15 @@ function properrun(kernel, rhomax = 500)
 
         end
 
-        delays = 0:0.1:2500.0
+        delays = 0:Δt:2500.0
 
-        local RESULTS = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = 5, delays = delays, rhomax = rhomax)
+        cvresults = runme(source, kernel = kernel, maxiter = 3000, numberofrestarts = numberofrestarts, delays = delays, rhomax = rhomax)
 
-        JLD2.save("results_" * source * string(kernel) * ".jld2", "cvresults", RESULTS, "delays", collect(delays))
+        JLD2.save("results_" * name * "_" * source *
+                  "_rho_" * string(rhomax) *
+                  "_K_"   * string(kernel) *
+                  "_Dt_"  * string(Δt)     *
+                  "_R_"   * string(numberofrestarts) * ".jld2", "cvresults", cvresults, "delays", collect(delays))
 
     end
 
