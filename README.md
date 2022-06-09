@@ -4,13 +4,13 @@ Results obtained with [GPCC.jl](https://github.com/ngiann/GPCC.jl) using data av
 
 ## Experiments
 
-### Experiment with synthetic data
+### ▶ Experiment with synthetic data
 
 We generate synthetic data  that conform to the model with increasing noise levels. Note how spurious peaks arise with increasing noise. In the presence of low noise (up to about σ=1.0), the true peak at 2 days is the incontestable winner. Beyond that, other peaks start to appear as potential candidates.
 
 ![exp1](plots/Synthetic/exp1_results.svg)
 
-### Virial datasets
+### ▶ Virial datasets
 
 
 #object   | v   |  ev |  mass | emass |  delay|edelay | z     |
