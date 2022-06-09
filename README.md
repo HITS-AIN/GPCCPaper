@@ -12,8 +12,12 @@ We generate synthetic data  that conform to the model with increasing noise leve
 
 ### Virial datasets
 
-- [3C120 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__3C120_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
-- [Mrk1501 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__Mrk1501_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
-- [Mrk335 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__Mrk335_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
-- [Mrk6 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__Mrk6_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
-- [PG2130099 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/431c7f0d94779f7a6a638e125d46efd0834b2a74/plots/Virial/results__PG2130099_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
+- [3C120 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/9dd173fde3bf9330eede4dbe0b85202b5a3f4e67/plots/Virial/results_GPCCv0.1.23_3C120_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
+
+- [Mrk1501 with OU kernel](https://github.com/HITS-AIN/GPCCPaper/blob/main/plots/Virial/results_GPCCv0.1.23_Mrk1501_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
+
+- [Mrk335 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/9dd173fde3bf9330eede4dbe0b85202b5a3f4e67/plots/Virial/results_GPCCv0.1.23_Mrk335_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
+
+- [Mrk6 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/9dd173fde3bf9330eede4dbe0b85202b5a3f4e67/plots/Virial/results_GPCCv0.1.23_Mrk6_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
+
+- [PG2130099 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/9dd173fde3bf9330eede4dbe0b85202b5a3f4e67/plots/Virial/results_GPCCv0.1.23_PG2130099_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
