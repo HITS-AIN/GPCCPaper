@@ -8,10 +8,14 @@ function plotsyntheticresults()
 
         filename = @sprintf("results_synthetic_%.2f.jld2", σ)
 
-        results, delays = JLD2.load(filename,"out","delays")
-        display(collect(delays))
-        subplot(8,2,index)
+        @printf("Loading file %s\n", filename)
+
+        results, delays = JLD2.load(filename, "out", "delays")
+
+        subplot(8, 2, index)
+
         title(string(σ))
+
         plot(delays, getprobabilities(results))
 
     end

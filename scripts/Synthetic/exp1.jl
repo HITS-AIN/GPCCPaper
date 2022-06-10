@@ -15,7 +15,7 @@ function runme(σ; maxiter=1, numberofrestarts=1)
 
     out = @showprogress pmap(τ -> (@suppress performcv(tobs, yobs, σobs; iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;τ], kernel = GPCC.matern32)), delays)
 
-    return out, delays
+    return out, delays,tobs, yobs, σobs
 
 end
 
@@ -27,15 +27,15 @@ runme(1.0; maxiter=1, numberofrestarts=1)
 
 function properrun()
 
-    for σ in [0.01; 0.25; 0.5; 0.75; 1.0; 1.25; 1.5; 2.0]
+    for σ in [0.01; 0.1; 0.2; 0.5; 1.0; 1.5]
 
-        out, delays = runme(σ; maxiter = 1000, numberofrestarts = 3)
+        out, delays, tobs, yobs, σobs  = runme(σ; maxiter = 1000, numberofrestarts = 5)
 
         filename = @sprintf("results_synthetic_%.2f.jld2", σ)
 
         @printf("Writing results in file %s\n", filename)
 
-        JLD2.save(filename, "out", out, "delays", collect(delays))
+        JLD2.save(filename, "out", out, "delays", collect(delays), "tobs", tobs, "yobs", yobs, "σobs", σobs)
 
     end
 
