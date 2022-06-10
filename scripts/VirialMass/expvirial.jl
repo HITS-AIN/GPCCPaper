@@ -9,7 +9,7 @@ function formdelays(source, Δt)
 
     τmax = maximum(maximum.(tobs)) - minimum(minimum.(tobs))
 
-    τ = 0.0:Δt:τmax
+    τ = 0.0:Δt:50.0
 
     L = length(tobs)
 
