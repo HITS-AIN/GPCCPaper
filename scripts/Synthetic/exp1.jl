@@ -27,7 +27,11 @@ runme(1.0; maxiter=1, numberofrestarts=1)
 
 function properrun()
 
+<<<<<<< HEAD
     for σ in [0.01; 0.25; 0.5; 0.75; 1.0; 1.25; 1.5, 2.0]
+=======
+    for σ in [0.01; 0.25; 0.5; 0.75; 1.0; 1.25; 1.5]
+>>>>>>> acbc824915ba8f56ca8096cc8cb01a85ae34db73
 
         out, delays = runme(σ; maxiter = 1000, numberofrestarts = 3)
 
