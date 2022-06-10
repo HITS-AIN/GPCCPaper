@@ -2,9 +2,7 @@
 
 Results obtained with [GPCC.jl](https://github.com/ngiann/GPCC.jl) using data available in [GPCCData.jl](https://github.com/ngiann/GPCCData.jl).
 
-## Experiments
-
-### ▶ Experiment with synthetic data drawn from GP with matern32 kernel
+## ▶ Synthetic data drawn from GP with matern32 kernel
 
 We generate synthetic data  that conform to the model with increasing noise levels.We note how various other peaks arise as the noise increases. In the presence of low noise, the true peak at 2 days is the incontestable winner. Beyond that, other peaks start to appear as potential candidates.
 
@@ -18,7 +16,8 @@ We align the light curves according to these two candidate delays. We note that 
 ![exp1_peak_2](plots/Synthetic/Synthetic_sigma_0.2_peak_2.0.svg)
 ![exp1_peak_13.8](plots/Synthetic/Synthetic_sigma_0.2_peak_13.8.svg)
 
-### ▶ Virial datasets
+
+## ▶ Virial datasets
 
 
 #object   | v   |  ev |  mass | emass |  delay|edelay | z     |
