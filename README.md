@@ -4,7 +4,7 @@ Results obtained with [GPCC.jl](https://github.com/ngiann/GPCC.jl) using data av
 
 ## Experiments
 
-### ▶ Experiment with synthetic data
+### ▶ Experiment with synthetic data drawn from GP with matern32 kernel
 
 We generate synthetic data  that conform to the model with increasing noise levels. Note how spurious peaks arise with increasing noise. In the presence of low noise, the true peak at 2 days is the incontestable winner. Beyond that, other peaks start to appear as potential candidates.
 
