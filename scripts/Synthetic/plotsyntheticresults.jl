@@ -1,26 +1,19 @@
-function plotsyntheticresults(jldfile)
+using GPCC, Printf, PyPlot, JLD2
 
-    out = JLD2.load(jldfile)["results"]
-
-    delays = formdelays(1)
-
-    G = [collect(a) for a in delays]
-
-    G1 = [g[1] for g in G]
-    G2 = [g[2] for g in G]
-
-    prob = reshape(getprobabilities(out), size(out))
+function plotsyntheticresults()
 
     figure()
 
-    subplot(311); cla()
-    pcolor(G1, G2, prob)
+    for (index, σ) in enumerate([0.01; 0.25; 0.5; 0.75; 1.0; 1.25; 1.5; 2.0])
 
-    subplot(312); cla()
-    plot(G1[:,1], vec(sum(prob, dims=2)))
+        filename = @sprintf("results_synthetic_%.2f.jld2", σ)
 
-    subplot(313); cla()
-    plot(G1[:,1], vec(sum(prob, dims=1)))
+        results, delays = JLD2.load(filename,"out","delays")
+        display(collect(delays))
+        subplot(8,2,index)
+        title(string(σ))
+        plot(delays, getprobabilities(results))
 
+    end
 
 end

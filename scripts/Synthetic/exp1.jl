@@ -35,7 +35,7 @@ function properrun()
 
         @printf("Writing results in file %s\n", filename)
 
-        JLD2.save(filename, "out", out, "delays", delays)
+        JLD2.save(filename, "out", out, "delays", collect(delays))
 
     end
 
