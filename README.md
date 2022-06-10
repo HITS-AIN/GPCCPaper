@@ -11,6 +11,13 @@ We generate synthetic data  that conform to the model with increasing noise leve
 ![exp1_lightcurves](plots/Synthetic/Synthetic_lightcurves.svg)
 ![exp1_delays_vs_prob](plots/Synthetic/Synthetic_delays_vs_prob.svg)
 
+
+Let us look closer the case $\sigma=0.2$. We see that there are two peaks: the true peak at $\sim 2$ and a second higher peak at $\sim 13.8$
+We align the light curves according to these two candidate delays. We note that the second peak, which is not the true peak, does lead to a plausible alignment.
+
+![exp1_peak_2](plots/Synthetic/Synthetic_sigma_0.2_peak_2.0.svg)
+![exp1_peak_13.8](plots/Synthetic/Synthetic_sigma_0.2_peak_13.8.svg)
+
 ### ▶ Virial datasets
 
 
