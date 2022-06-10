@@ -4,7 +4,7 @@ function plotsyntheticresults()
 
     figure()
 
-    for (index, σ) in enumerate([0.01; 0.25; 0.5; 0.75; 1.0; 1.25; 1.5; 2.0])
+    for (index, σ) in enumerate([0.01; 0.1; 0.2; 0.5; 1.0; 1.5])
 
         filename = @sprintf("results_synthetic_%.2f.jld2", σ)
 
@@ -12,11 +12,29 @@ function plotsyntheticresults()
 
         results, delays = JLD2.load(filename, "out", "delays")
 
-        subplot(8, 2, index)
+        subplot(3, 2, index)
 
-        title(string(σ))
+        title(@sprintf("σ=%.2f", σ), fontsize=8)
 
         plot(delays, getprobabilities(results))
+
+    end
+
+    figure()
+
+    for (index, σ) in enumerate([0.01; 0.1; 0.2; 0.5; 1.0; 1.5])
+
+        subplot(3, 2, index)
+
+
+        tobs, yobs, σobs = simulatedata(σ=σ)
+        close()
+
+        title(@sprintf("σ=%.2f", σ), fontsize=8)
+
+        for i in 1:2
+            errorbar(tobs[i], yobs[i], yerr=2σobs[i], fmt="o")
+        end
 
     end
 
