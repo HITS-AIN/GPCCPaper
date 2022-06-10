@@ -6,13 +6,13 @@ Results obtained with [GPCC.jl](https://github.com/ngiann/GPCC.jl) using data av
 
 ### ▶ Experiment with synthetic data
 
-We generate synthetic data  that conform to the model with increasing noise levels. Note how spurious peaks arise with increasing noise. In the presence of low noise), the true peak at 2 days is the incontestable winner. Beyond that, other peaks start to appear as potential candidates.
+We generate synthetic data  that conform to the model with increasing noise levels. Note how spurious peaks arise with increasing noise. In the presence of low noise, the true peak at 2 days is the incontestable winner. Beyond that, other peaks start to appear as potential candidates.
 
 ![exp1_lightcurves](plots/Synthetic/Synthetic_lightcurves.svg)
 ![exp1_delays_vs_prob](plots/Synthetic/Synthetic_delays_vs_prob.svg)
 
 
-Let us look closer the case $\sigma=0.2$. We see that there are two peaks: the true peak at $\sim 2$ and a second higher peak at $\sim 13.8$
+Let us look closer at case $\sigma=0.2$. We see that there are two peaks: the true peak at $2$ days and a second higher peak at $\sim 13.8$ days.
 We align the light curves according to these two candidate delays. We note that the second peak, which is not the true peak, does lead to a plausible alignment.
 
 ![exp1_peak_2](plots/Synthetic/Synthetic_sigma_0.2_peak_2.0.svg)
