@@ -9,7 +9,7 @@ function runme(σ; maxiter=1, numberofrestarts=1)
 
     τmax = maximum(maximum.(tobs)) - minimum(minimum.(tobs))
 
-    delays = 0.0:0.1:1.05*τmax
+    delays = 0.0:0.1:1.5*τmax
 
     @printf("Trying out %d delay combinations in parallel\n", length(delays))
 
