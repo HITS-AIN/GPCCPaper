@@ -37,7 +37,7 @@ runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, del
 runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
 
 
-function properrun(; kernel, rhomax = 300.0, Δt = 0.02, numberofrestarts = 13, name = "")
+function properrun(; kernel, rhomax = 300.0, Δt = 0.025, numberofrestarts = 13, name = "")
 
     for source in listvirialdatasets()
 
