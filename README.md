@@ -30,14 +30,13 @@ PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630|
 
 
 
-- [Mrk335 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/736188d65d26ff672663ef0efa8c126cc69834e2/plots/Virial/results_GPCC@0.1.24_3C120_rho_500_K_OU_Dt_0.025_R_13.jld2_delays_vs_prob.html)
+- [Mrk335 with OU kernel]()
 
 - [Mrk1501 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/bfeef3154cbde25832a4c0ed42ee529a95a20574/plots/Virial/results_GPCCv0.1.23_Mrk1501_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
 ([zoom 0-50](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/4edc82089228f3f93810d5c34cb6fa817188afc0/plots/Virial/results_globalnoiseterm_0_50_Mrk1501_rho_1000_K_OU_Dt_0.2_R_15.jld2_delays_vs_prob.html))
 
 
-- [3C120 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/9dd173fde3bf9330eede4dbe0b85202b5a3f4e67/plots/Virial/results_GPCCv0.1.23_3C120_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
-([zoom 0-50](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/4edc82089228f3f93810d5c34cb6fa817188afc0/plots/Virial/results_globalnoiseterm_0_50_3C120_rho_1000_K_OU_Dt_0.2_R_15.jld2_delays_vs_prob.html))
+- [3C120 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/736188d65d26ff672663ef0efa8c126cc69834e2/plots/Virial/results_GPCC@0.1.24_3C120_rho_500_K_OU_Dt_0.025_R_13.jld2_delays_vs_prob.html)
 
 
 - [Mrk6 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/9dd173fde3bf9330eede4dbe0b85202b5a3f4e67/plots/Virial/results_GPCCv0.1.23_Mrk6_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
