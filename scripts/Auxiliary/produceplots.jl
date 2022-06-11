@@ -1,4 +1,4 @@
-using Printf, GPCC, PlotlyJS, JLD2
+using Printf, GPCC, PlotlyJS, JLD2, StatsFuns, Statistics
 
 
 function getprob(cvresults)
