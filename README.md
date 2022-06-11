@@ -55,4 +55,3 @@ PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630|
   - [Peak at 57.27](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/fa6dec7027c45ce424bc1c1702707c0283528ced/plots/Virial/PG2130099_aligned_at_57.27.svg)
   - [Peak at 98.80](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/fa6dec7027c45ce424bc1c1702707c0283528ced/plots/Virial/PG2130099_aligned_at_98.8.svg)
 
-(Personal note: plot all datasets in the end and compare)
