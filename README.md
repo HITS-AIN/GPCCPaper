@@ -30,14 +30,20 @@ PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630|
 
 
 
-- [Mrk335 with OU kernel]()
-
+- [Mrk335 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/4feda60244ee3cab098b74187c50ccb67d75d6c5/plots/Virial/results_GPCC@0.1.24_Mrk335_rho_500_K_OU_Dt_0.025_R_13.jld2_delays_vs_prob.html)
+  - [Peak at 13.4](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/1375b5bbfdcc54ab16b2a4c1734cdcdcbefc5e79/plots/Virial/Mrk335_aligned_at_13.4.svg)
+  - [Peak at 87.37](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/1375b5bbfdcc54ab16b2a4c1734cdcdcbefc5e79/plots/Virial/Mrk335_aligned_at_87.37.svg)
+  - [Peak at 123.25](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/1375b5bbfdcc54ab16b2a4c1734cdcdcbefc5e79/plots/Virial/Mrk335_aligned_at_123.25.svg)
+  
+  
 - [Mrk1501 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/bfeef3154cbde25832a4c0ed42ee529a95a20574/plots/Virial/results_GPCCv0.1.23_Mrk1501_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
 ([zoom 0-50](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/4edc82089228f3f93810d5c34cb6fa817188afc0/plots/Virial/results_globalnoiseterm_0_50_Mrk1501_rho_1000_K_OU_Dt_0.2_R_15.jld2_delays_vs_prob.html))
 
 
 - [3C120 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/736188d65d26ff672663ef0efa8c126cc69834e2/plots/Virial/results_GPCC@0.1.24_3C120_rho_500_K_OU_Dt_0.025_R_13.jld2_delays_vs_prob.html)
-
+  - [Peak at 27.65](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/e5c16e9580403ff394b7527313513ebba7bffd08/plots/Virial/3C120_aligned_at_27.65.svg)
+  - [Peak at 100.55](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/e5c16e9580403ff394b7527313513ebba7bffd08/plots/Virial/3C120_aligned_at_100.55.svg)
+  - [Peak at 117.325](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/e5c16e9580403ff394b7527313513ebba7bffd08/plots/Virial/3C120_aligned_at_117.325.svg)
 
 - [Mrk6 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/9dd173fde3bf9330eede4dbe0b85202b5a3f4e67/plots/Virial/results_GPCCv0.1.23_Mrk6_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html)
 ([zoom 0-50](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/dff05f430c5372ba6bdfb58492970fb0130a1919/plots/Virial/results_globalnoiseterm_0_50_Mrk6_rho_1000_K_OU_Dt_0.2_R_15.jld2_delays_vs_prob.html))
