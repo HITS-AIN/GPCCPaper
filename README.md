@@ -50,6 +50,9 @@ PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630|
   - [Peak at 117.1](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/4f5d016b7664485814146b63e0b4eb880fe64eab/plots/Virial/Mrk6_aligned_at_117.1.svg)
 
 
-- [PG2130099 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/9dd173fde3bf9330eede4dbe0b85202b5a3f4e67/plots/Virial/results_GPCCv0.1.23_PG2130099_rho_10000_K_OU_Dt_0.2_R_13.jld2_delays_vs_prob.html) ([zoom 0-50](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/4edc82089228f3f93810d5c34cb6fa817188afc0/plots/Virial/results_globalnoiseterm_0_50_PG2130099_rho_1000_K_OU_Dt_0.2_R_15.jld2_delays_vs_prob.html))
+- [PG2130099 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/fa6dec7027c45ce424bc1c1702707c0283528ced/plots/Virial/results_GPCC@0.1.24_PG2130099_rho_500_K_OU_Dt_0.025_R_13.jld2_delays_vs_prob.html)
+  - [Peak at 10.17](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/fa6dec7027c45ce424bc1c1702707c0283528ced/plots/Virial/PG2130099_aligned_at_10.17.svg)
+  - [Peak at 57.27](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/fa6dec7027c45ce424bc1c1702707c0283528ced/plots/Virial/PG2130099_aligned_at_57.27.svg)
+  - [Peak at 98.80](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/fa6dec7027c45ce424bc1c1702707c0283528ced/plots/Virial/PG2130099_aligned_at_98.8.svg)
 
 (Personal note: plot all datasets in the end and compare)
