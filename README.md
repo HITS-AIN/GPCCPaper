@@ -11,7 +11,7 @@ We generate synthetic data  that conform to the model with increasing noise leve
 
 
 Let us look closer at case $\sigma=0.2$. We see that there are two peaks: the true peak at $2$ days and a second higher peak at $\sim 13.8$ days.
-We align the light curves according to these two candidate delays. We note that the second peak, which is not the true peak, does lead to a plausible alignment. As even in this synthetic case, where the light curves are related according to the model assumptions, an alternative to the true peak appears as a strong competitor, we are open to the possibility that such "aliases" are common in the search of delays of real light curves too.
+We align the light curves according to these two candidate delays. We note that the second peak, which is not the true peak, does lead to a plausible alignment. 
 
 ![exp1_peak_2](plots/Synthetic/Synthetic_sigma_0.2_peak_2.0.svg)
 ![exp1_peak_13.8](plots/Synthetic/Synthetic_sigma_0.2_peak_13.8.svg)
