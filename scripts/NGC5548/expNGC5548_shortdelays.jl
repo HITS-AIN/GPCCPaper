@@ -21,7 +21,7 @@ runme("NGC5548"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, d
 runme("NGC5548"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
 
 
-function properrun(; kernel, rhomax = 700.0, Δt = 0.1, numberofrestarts = 13, name = "")
+function properrun(; kernel, rhomax = 700.0, Δt = 0.1, numberofrestarts = 13, name = "shortdelays")
 
     for source in ["NGC5548"]
 
