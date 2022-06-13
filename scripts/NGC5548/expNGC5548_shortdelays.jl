@@ -25,7 +25,7 @@ function properrun(; kernel, rhomax = 700.0, Δt = 0.1, numberofrestarts = 13, n
 
     for source in ["NGC5548"]
 
-        delays = τ = 0.0:Δt:τmax
+        delays = τ = 0.0:Δt:100
 
         cvresults = runme(source, maxiter = 3000, numberofrestarts = numberofrestarts, rhomax = rhomax, kernel = kernel, delays = delays)
 
