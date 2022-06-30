@@ -10,7 +10,7 @@ We generate synthetic data  that conform to the model with increasing noise leve
 ![exp1_delays_vs_prob](plots/Synthetic/Synthetic_delays_vs_prob.svg)
 
 
-Let us look closer at case $\sigma=0.2$. We see that there are two peaks: the true peak at $2$ days and a second higher peak at $\sim 13.8$ days.
+Let us look closer at case σ=0.2. We see that there are two peaks: the true peak at 2 days and a second higher peak at ~13.8 days.
 We align the light curves according to these two candidate delays. We note that the second peak, which is not the true peak, does lead to a plausible alignment. 
 
 ![exp1_peak_2](plots/Synthetic/Synthetic_sigma_0.2_peak_2.0.svg)
@@ -20,13 +20,13 @@ We align the light curves according to these two candidate delays. We note that 
 ## ▶ Virial datasets
 
 
-#object   | v   |  ev |  mass | emass |  delay|edelay | z     |
-| ------- | --- | --- | ----- | ----- | ----- | ----- | ----- |
-Mrk335	  |1293 | 64  | 4.6e6 | 0.5e6 | 14.0  |  0.9  | 0.0258| 
-Mrk1501   |3321 | 107 | 33.4e6| 4.9e6 | 13.8  |  5.4  | 0.0893|
-3C120     |1514 | 65  | 12.2e6| 1.2e6 | 25.6  |  2.4  | 0.0330|
-Mrk6      |3714 | 68  | 24.8e6| 2.3e6 | 10.2  |  1.2  | 0.0188|
-PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630|
+#object   | v   |  ev |  mass | emass |  delay|edelay | z     | luminosity|
+| ------- | --- | --- | ----- | ----- | ----- | ----- | ----- | ----------| 
+Mrk335	  |1293 | 64  | 4.6e6 | 0.5e6 | 14.0  |  0.9  | 0.0258| 5.01e43   |
+Mrk1501   |3321 | 107 | 33.4e6| 4.9e6 | 13.8  |  5.4  | 0.0893| 2.09e44   |
+3C120     |1514 | 65  | 12.2e6| 1.2e6 | 25.6  |  2.4  | 0.0330| 9.12e43   |
+Mrk6      |3714 | 68  | 24.8e6| 2.3e6 | 10.2  |  1.2  | 0.0188| 5.62e43   |
+PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630| 1.41e44   |
 
 
 
