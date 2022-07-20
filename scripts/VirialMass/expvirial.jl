@@ -20,11 +20,35 @@ function formdelays(source, Δt)
 
 end
 
+
+function determinerhomax(source, kernel)
+
+    tobs, yobs, σobs, = readdataset(source = source)
+
+    rho_array = map(1:length(tobs)) do index
+
+        params = GPCC.singlegp(tobs[index], yobs[index], σobs[index]; kernel=kernel, iterations=3000, seed=1, numberofrestarts=100, initialrandom=5, rhomax = 5000)[3]
+
+        params[3]
+
+    end
+
+    @printf("Returned rho when fitting single lightcurves\n")
+
+    map(x->@printf("%f\n",x), rho_array)
+
+    rhomax = maximum(rho_array) * 1.30
+
+    @printf("Returning rhomax = %f\n", rhomax)
+
+    return rhomax
+
+end
+
+
 function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = kernel, delays = delays)
 
     tobs, yobs, σobs, = readdataset(source = source);
-
-
 
     @printf("Trying out %d delay combinations in parallel with kernel %s\n", length(delays), string(kernel))
 
@@ -33,21 +57,18 @@ function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = 
 end
 
 
-# warmup
-runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
-runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
-
-
-function properrun(; kernel, rhomax = 300.0, Δt = 0.025, numberofrestarts = 13, name = "")
+function properrun(; kernel, Δt = 0.025, numberofrestarts = 13, name = "")
 
     for source in listvirialdatasets()
 
         delays = formdelays(source, Δt)
 
+        rhomax = determinerhomax(source, kernel)
+
         cvresults = runme(source, maxiter = 3000, numberofrestarts = numberofrestarts, rhomax = rhomax, kernel = kernel, delays = delays)
 
         JLD2.save("results_" * name * "_" * source *
-		  "date_" * string(today()) *
+		         "_date_" * string(today()) *
                   "_rho_" * string(rhomax) *
                   "_K_"   * string(kernel) *
                   "_Dt_"  * string(Δt)     *
@@ -56,3 +77,9 @@ function properrun(; kernel, rhomax = 300.0, Δt = 0.025, numberofrestarts = 13,
     end
 
 end
+
+
+
+# warmup
+runme("3C120"; maxiter=1, numberofrestarts=1, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
+runme("3C120"; maxiter=1, numberofrestarts=1, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
