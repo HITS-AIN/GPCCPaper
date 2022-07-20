@@ -57,7 +57,7 @@ function runme(source; maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = 
 end
 
 
-function properrun(; kernel, Δt = 0.025, numberofrestarts = 13, name = "")
+function properrun(; kernel, Δt = 0.05, numberofrestarts = 13, name = "")
 
     for source in listvirialdatasets()
 
