@@ -81,5 +81,5 @@ end
 
 
 # warmup
-runme("3C120"; maxiter=1, numberofrestarts=1, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
-runme("3C120"; maxiter=1, numberofrestarts=1, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
+runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10.0, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
+runme("3C120"; maxiter=1, numberofrestarts=1, rhomax = 10.0, kernel = GPCC.OU, delays = LinRange(0.0, 10, 2*nworkers()))
