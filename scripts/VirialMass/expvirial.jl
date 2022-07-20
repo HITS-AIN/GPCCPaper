@@ -2,6 +2,7 @@
 using JLD2
 using ProgressMeter, Suppressor, Printf
 using GPCCData
+using Dates
 
 function formdelays(source, Δt)
 
@@ -46,6 +47,7 @@ function properrun(; kernel, rhomax = 300.0, Δt = 0.025, numberofrestarts = 13,
         cvresults = runme(source, maxiter = 3000, numberofrestarts = numberofrestarts, rhomax = rhomax, kernel = kernel, delays = delays)
 
         JLD2.save("results_" * name * "_" * source *
+		  "date_" * string(today()) *
                   "_rho_" * string(rhomax) *
                   "_K_"   * string(kernel) *
                   "_Dt_"  * string(Δt)     *
