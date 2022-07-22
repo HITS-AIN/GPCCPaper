@@ -53,7 +53,7 @@ function runme(tobs, yobs, σobs; maxiter=1, numberofrestarts=1, rhomax = rhomax
 end
 
 
-function properrun(; kernel, Δt = 0.05, numberofrestarts = 13, name = "")
+function properrun(; kernel, Δt = 0.1, numberofrestarts = 10, name = "")
 
         source = "Mgc0811"
 
