@@ -67,7 +67,7 @@ function properrun(; kernel, Δt = 0.1, numberofrestarts = 10, name = "")
 
             I1, I2 = lambda[i] < lambda[6] ? (i, 6) : (6, i)
 
-            delays = formdelays(tobs[[I1; I2]], Δt)
+            delays = collect(0.0:0.01:4)
 
             @printf("Running GPCC between %f and %f\n", lambda[I1], lambda[I2])
 
