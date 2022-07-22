@@ -65,11 +65,11 @@ function properrun(; kernel, Δt = 0.1, numberofrestarts = 10, name = "")
 
         for i in 1:5
 
-            I1, I2 = lambda[i] < lambda[6] ? i, 6 : 6, i
+            I1, I2 = lambda[i] < lambda[6] ? (i, 6) : (6, i)
 
             delays = formdelays(tobs[[I1; I2]], Δt)
 
-            @printf("Running GPCC between %f and %f\n", lambda[i], lambda[6])
+            @printf("Running GPCC between %f and %f\n", lambda[I1], lambda[I2])
 
             cvresults = runme(tobs[[I1; I2]], yobs[[I1; I2]], σobs[[I1; I2]], maxiter = 3000, numberofrestarts = numberofrestarts, rhomax = rhomax, kernel = kernel, delays = delays)
 
