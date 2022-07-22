@@ -4,9 +4,7 @@ using ProgressMeter, Suppressor, Printf
 using ADDatasets
 using Dates
 
-function formdelays(source, Δt)
-
-    tobs, = readdataset(source = source);
+function formdelays(tobs, Δt)
 
     τmax = maximum(maximum.(tobs)) - minimum(minimum.(tobs))
 
@@ -59,13 +57,13 @@ function properrun(; kernel, Δt = 0.05, numberofrestarts = 13, name = "")
 
         source = "Mgc0811"
 
-        delays = formdelays(source, Δt)
-
         rhomax = determinerhomax(source, kernel)
 
         lambda, tobs, yobs, σobs, = readdataset(source = source);
 
         for i in 1:5
+
+            delays = formdelays(tobs[[i;6]], Δt)
 
             @printf("Running GPCC between %f and %f\n", lambda[i], lambda[6])
 
