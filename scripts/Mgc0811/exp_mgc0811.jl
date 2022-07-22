@@ -61,15 +61,19 @@ function properrun(; kernel, Δt = 0.1, numberofrestarts = 10, name = "")
 
         lambda, tobs, yobs, σobs, = readdataset(source = source);
 
+        @printf("Wavelengths in dataset:\n"); display(lambda)
+
         for i in 1:5
 
-            delays = formdelays(tobs[[i;6]], Δt)
+            I1, I2 = lambda[i] < lambda[6] ? i, 6 : 6, i
+
+            delays = formdelays(tobs[[I1; I2]], Δt)
 
             @printf("Running GPCC between %f and %f\n", lambda[i], lambda[6])
 
-            cvresults = runme(tobs[[i;6]], yobs[[i;6]], σobs[[i;6]], maxiter = 3000, numberofrestarts = numberofrestarts, rhomax = rhomax, kernel = kernel, delays = delays)
+            cvresults = runme(tobs[[I1; I2]], yobs[[I1; I2]], σobs[[I1; I2]], maxiter = 3000, numberofrestarts = numberofrestarts, rhomax = rhomax, kernel = kernel, delays = delays)
 
-            JLD2.save("results_" * name * "_Mgc0811_" * string(lambda[i]) * "_" * string(lambda[6]) * 
+            JLD2.save("results_" * name * "_Mgc0811_" * string(lambda[I1]) * "_" * string(lambda[I2]) * 
                         "_date_" * string(today()) *
                         "_rho_" * string(rhomax)  *
                         "_K_"   * string(kernel)  *
