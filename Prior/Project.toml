@@ -1,0 +1,13 @@
+[deps]
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+FITSIO = "525bcba6-941b-5504-bd06-fd0dc1a4d2eb"
+ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
+ForwardNeuralNetworks = "41bbd1a4-0eca-4bcd-b6b1-8656d032eaeb"
+Interpolations = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"
+KernelDensity = "5ab0869b-81aa-558d-bb23-cbf5423bbe9b"
+Optim = "429524aa-4258-5aef-a3af-852621145aeb"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+StatsFuns = "4c63d2b9-4356-54db-8cca-17b64c39e42c"
