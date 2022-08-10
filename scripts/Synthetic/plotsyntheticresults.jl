@@ -1,41 +1,59 @@
-using GPCC, Printf, PyPlot, JLD2
+#
+# If problem with CairoMakie, then start with
+# LD_LIBRARY_PATH="" nice ~/julia-1.7.3/bin/julia -O3 
+#
+using GLMakie, CairoMakie # ❗ important that Makie is imported first 
+using GPCC, Printf, JLD2
+
+
+# Use this to save figure
+# CairoMakie.activate!() ; save(figname, fig) ; GLMakie.activate!()
 
 function plotsyntheticresults()
 
-    figure()
+    GLMakie.activate!()
+    
+    fig = Figure(resolution = (1800, 2400), fontsize = 38)
 
-    for (index, σ) in enumerate([0.01; 0.1; 0.2; 0.5; 1.0; 1.5])
+    Label(fig[0, 1:2], text = "Synthetic data", textsize = 46)
 
+    display(fig) 
+
+    GL = fig[1:4, 1:2] = GridLayout()
+
+    for (index, σ) in enumerate([0.01; 0.1; 0.2; 1.0]) # left out σ=0.5 and σ=1.5
+
+        
+        # Plot simulated data
+        
+        tobs, yobs, __σobs__UNUSED = simulatedata(σ=σ)
+        
+        ax1 = Axis(GL[index, 1], xlabel = "days", ylabel = "flux")
+        
+        scatter!(ax1, tobs[1], yobs[1], color=:blue, markersize=18)
+        
+        scatter!(ax1, tobs[2], yobs[2], color=:red, markersize=18)
+        
+
+
+        # Plot delay posterior
+        
         filename = @sprintf("results_synthetic_%.2f.jld2", σ)
-
+        
         @printf("Loading file %s\n", filename)
-
+        
         results, delays = JLD2.load(filename, "out", "delays")
+        
+        ax2 = Axis(GL[index, 2], xlabel = "delay in days", ylabel = L"\mathbf{\pi^{(CV)}}", ylabelsize = 44)
+        
+        lines!(ax2, delays, getprobabilities(results), linewidth=4)
 
-        subplot(3, 2, index)
+        ax2.xticks = LinearTicks(20)
 
-        title(@sprintf("σ=%.2f", σ), fontsize=8)
-
-        plot(delays, getprobabilities(results))
-
+        Label(GL[index, 1:2, Top()], @sprintf("Experiment %d: σ = %0.2f", index, σ), valign = :bottom, padding = (0, 0, 35, 0))
+        
     end
-
-    figure()
-
-    for (index, σ) in enumerate([0.01; 0.1; 0.2; 0.5; 1.0; 1.5])
-
-        subplot(3, 2, index)
-
-
-        tobs, yobs, σobs = simulatedata(σ=σ)
-        close()
-
-        title(@sprintf("σ=%.2f", σ), fontsize=8)
-
-        for i in 1:2
-            errorbar(tobs[i], yobs[i], yerr=2σobs[i], fmt="o")
-        end
-
-    end
+    
+    fig
 
 end

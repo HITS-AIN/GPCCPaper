@@ -1,6 +1,8 @@
-using Statistics, StatsFuns, PyPlot
+using GLMakie, CairoMakie, Statistics, StatsFuns, GPCC
 
 function plotaligned(tobs, yobs, σobs; kernel = kernel, delays = delays, rhomax = rhomax, numberofrestarts = 7, iterations = 1000)
+
+    GLMakie.activate!()
 
     minopt, pred, (α, posterioroffsetb, ρ) = gpcc(tobs, yobs, σobs;
         kernel = kernel, delays = delays, iterations = iterations, numberofrestarts = numberofrestarts,
@@ -10,23 +12,27 @@ function plotaligned(tobs, yobs, σobs; kernel = kernel, delays = delays, rhomax
 
     @assert(length(tobs) == length(yobs) == length(delays) == length(b) == length(α) == 2)
 
-    figure()
+    fig = Figure(resolution=(3840,2400/2),fontsize = 44)
 
-    PyPlot.plot(tobs[1] .- delays[1], 1 / α[1] * (yobs[1] .- b[1]), "o")
+    display(fig) 
 
-    PyPlot.plot(tobs[2] .- delays[2], 1 / α[2] * (yobs[2] .- b[2]), "o")
+    # ax = Axis(fig[1,1],title = "Synthetic curves, σ=0.2, aligned at delay 14.0", xlabel = "days", ylabel = "flux")
+    ax = Axis(fig[1,1],title = "", xlabel = "days", ylabel = "flux")
+    
+    # ax.xticks = LinearTicks(30)
 
-    title(@sprintf("%f",delays[2]))
+    # ax.yticks = LinearTicks(5)
+
+    # xlims!(ax, 0, τmax*1.01) #; ylims!(ax, 0.3, maxy)
+
+    scatter!(ax, tobs[1] .- delays[1], 1 / α[1] * (yobs[1] .- b[1]), color=:blue, markersize=18)
+
+    scatter!(ax, tobs[2] .- delays[2], 1 / α[2] * (yobs[2] .- b[2]), color=:red, markersize=18)
 
 
-    interval = maximum(maximum.(tobs)) - minimum(minimum.(tobs))
-
-    xtest = minimum(minimum.(tobs)):(interval/1000):maximum(maximum.(tobs))
-
-
-   # PyPlot.plot(xtest .- delays[1], (1 / α[1]) * (pred(xtest)[1][1] .- b[1]))
-
-   # PyPlot.plot(xtest .- delays[2], (1 / α[2]) * (pred(xtest)[1][2] .- b[2]), "--")
-
-
+    fig
 end
+
+
+# fig = plotaligned(tobs, yobs,σobs, kernel=GPCC.OU, delays=[0;2], rhomax=1200)
+# CairoMakie.activate!() ; save("synth_aligned_at_2.0.png", fig) ; GLMakie.activate!()
