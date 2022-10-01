@@ -49,7 +49,11 @@ end
 
 helper(delay) = (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;delay], iterations = 1000, rhomax = 1000)[1]) # keep only first output
 
-loglikel = @showpogress pmap(helper, candidatedelays)
+loglikel = @showprogress pmap(helper, candidatedelays)
+
+plot(candidatedelays, getprobabilities(loglikel))
+
+title("posterior delay for 3C120")
 ```
 
 
