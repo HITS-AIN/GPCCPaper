@@ -28,22 +28,28 @@ Mrk1501   |3321 | 107 | 33.4e6| 4.9e6 | 13.8  |  5.4  | 0.0893| 2.09e44   |
 Mrk6      |3714 | 68  | 24.8e6| 2.3e6 | 10.2  |  1.2  | 0.0188| 5.62e43   |
 PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630| 1.41e44   |
 
-### 3C120
+### Posterior for 3C120
 
-We obtained the posterior for 3C120 using the following:
+We obtained the posteriors for the above objects using the following:
 ```
 using Distributed
 addprocs(16) 
 @everywhere using GPCC
 using GPCCData
+using ProgressMeter, Suppressor # need to be indepedently installed
 
 candidatedelays = collect(0.0:0.1:140)
 
 tobs, yobs, σobs,  = loaddataset("3C120");
 
-helper(delay) = gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;delay], iterations = 1000, rhomax = 300)[1] # keep only first output
+# warmup
+let 
+ @everywhere gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;delay], iterations = 10, rhomax = 300)[1] # keep only first output
+end
 
-loglikel = pmap(helper, candidatedelays)
+helper(delay) = (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;delay], iterations = 1000, rhomax = 1000)[1]) # keep only first output
+
+loglikel = @showpogress pmap(helper, candidatedelays)
 ```
 
 
