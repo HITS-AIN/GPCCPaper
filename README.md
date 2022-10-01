@@ -38,9 +38,13 @@ addprocs(16)
 using GPCCData
 using ProgressMeter, Suppressor # need to be indepedently installed
 
-candidatedelays = collect(0.0:0.1:140)
 
 tobs, yobs, σobs,  = loaddataset("3C120");
+
+maxt = maximum(map(maximum, tobs)) # find maximum observed time 
+
+candidatedelays = collect(0.0:0.1:maxt)
+
 
 # warmup
 let 
