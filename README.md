@@ -48,7 +48,7 @@ candidatedelays = collect(0.0:0.1:maxt)
 # warmup 
 @showprogress pmap(d->(@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=1,rhomin=0.01, rhomax = 2000, delays = [0;d], numberofrestarts=5)[1]), candidatedelays[1:3*nworkers()])
 
-loglikel = @showprogress pmap(d->(@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=1,rhomin=0.01, rhomax = 2000, delays = [0;d], numberofrestarts=10)[1]), candidatedelays)
+loglikel = @showprogress pmap(d->(@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=2000,rhomin=0.01, rhomax = 2000, delays = [0;d], numberofrestarts=10)[1]), candidatedelays)
 
 plot(candidatedelays, getprobabilities(loglikel))
 
