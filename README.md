@@ -28,7 +28,7 @@ Mrk1501   |3321 | 107 | 33.4e6| 4.9e6 | 13.8  |  5.4  | 0.0893| 2.09e44   |
 Mrk6      |3714 | 68  | 24.8e6| 2.3e6 | 10.2  |  1.2  | 0.0188| 5.62e43   |
 PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630| 1.41e44   |
 
-
+<!---
 
 - [Mrk335 with OU kernel](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/4feda60244ee3cab098b74187c50ccb67d75d6c5/plots/Virial/results_GPCC@0.1.24_Mrk335_rho_500_K_OU_Dt_0.025_R_13.jld2_delays_vs_prob.html)
   - [Peak at 13.4](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/1375b5bbfdcc54ab16b2a4c1734cdcdcbefc5e79/plots/Virial/Mrk335_aligned_at_13.4.svg)
@@ -55,3 +55,4 @@ PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630| 1.41e44   |
   - [Peak at 57.27](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/fa6dec7027c45ce424bc1c1702707c0283528ced/plots/Virial/PG2130099_aligned_at_57.27.svg)
   - [Peak at 98.80](https://rawcdn.githack.com/HITS-AIN/GPCCPaper/fa6dec7027c45ce424bc1c1702707c0283528ced/plots/Virial/PG2130099_aligned_at_98.8.svg)
 
+-->
