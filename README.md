@@ -51,7 +51,7 @@ let
  @everywhere gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;2], iterations = 10, rhomax = 300)[1] # keep only first output
 end
 
-helper(delay) = (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;delay], iterations = 1000, rhomax = 1000)[1]) # keep only first output
+@everywhere helper(delay) = (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;delay], iterations = 1000, rhomax = 1000)[1]) # keep only first output
 
 loglikel = @showprogress pmap(helper, candidatedelays)
 
