@@ -36,7 +36,7 @@ using Distributed
 addprocs(16) 
 @everywhere using GPCC
 using GPCCData
-using ProgressMeter, Suppressor # need to be indepedently installed
+@everywhere using ProgressMeter, Suppressor # need to be indepedently installed
 
 
 tobs, yobs, σobs,  = readdataset(source = "3C120");
@@ -45,13 +45,10 @@ maxt = maximum(map(maximum, tobs)) # find maximum observed time
 
 candidatedelays = collect(0.0:0.1:maxt)
 
+@everywhere helper(delay, iter=2000) = (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;delay], iterations = iter, rhomax = 1000)[1]) # keep only first output
 
 # warmup
-let 
- @everywhere gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;2], iterations = 10, rhomax = 300)[1] # keep only first output
-end
-
-@everywhere helper(delay) = (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;delay], iterations = 1000, rhomax = 1000)[1]) # keep only first output
+@everywhere helper(1, iter=1)
 
 loglikel = @showprogress pmap(helper, candidatedelays)
 
