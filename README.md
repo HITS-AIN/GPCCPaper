@@ -44,7 +44,7 @@ tobs, yobs, σobs,  = loaddataset("3C120");
 
 # warmup
 let 
- @everywhere gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;delay], iterations = 10, rhomax = 300)[1] # keep only first output
+ @everywhere gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;2], iterations = 10, rhomax = 300)[1] # keep only first output
 end
 
 helper(delay) = (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;delay], iterations = 1000, rhomax = 1000)[1]) # keep only first output
