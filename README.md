@@ -30,7 +30,7 @@ PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630| 1.41e44   |
 
 ### Posterior for 3C120
 
-We obtained the posteriors for the above objects using the following:
+We obtained the posterior delay for 3C120 using the following:
 ```
 using Distributed
 addprocs(16) 
