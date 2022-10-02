@@ -35,9 +35,9 @@ We obtained the posterior delay for 3C120 using the following:
 using Distributed
 addprocs(16) 
 @everywhere using GPCC
-using GPCCData
 @everywhere using ProgressMeter, Suppressor # need to be indepedently installed
-
+using GPCCData
+using PyPlot
 
 tobs, yobs, σobs,  = readdataset(source = "3C120");
 
