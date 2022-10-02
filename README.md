@@ -46,9 +46,17 @@ maxt = maximum(map(maximum, tobs)) # find maximum observed time
 candidatedelays = collect(0.0:0.1:maxt)
 
 # warmup 
-@showprogress pmap(d->(@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=1,rhomin=0.01, rhomax = 2000, delays = [0;d], numberofrestarts=5)[1]), candidatedelays[1:3*nworkers()])
+@showprogress pmap(candidatedelays[1:2*nworkers()]) do delay
 
-loglikel = @showprogress pmap(d->(@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=2000,rhomin=0.01, rhomax = 2000, delays = [0;d], numberofrestarts=10)[1]), candidatedelays)
+    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=1,rhomin=0.01, rhomax = 2000, delays = [0;d], numberofrestarts=1)[1])
+    
+end
+
+loglikel = @showprogress pmap(candidatedelays) do delay
+
+    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=2000, rhomin=0.01, rhomax = 2000, delays = [0;d], numberofrestarts=10)[1])
+    
+end;
 
 plot(candidatedelays, getprobabilities(loglikel))
 
