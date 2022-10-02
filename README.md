@@ -48,13 +48,13 @@ candidatedelays = collect(0.0:0.1:maxt)
 # warmup 
 @showprogress pmap(candidatedelays[1:2*nworkers()]) do delay
 
-    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=1,rhomin=0.01, rhomax = 2000, delays = [0;d], numberofrestarts=1)[1])
+    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=1,rhomin=0.01, rhomax = 2000, delays = [0; delay], numberofrestarts=1)[1])
     
 end
 
 loglikel = @showprogress pmap(candidatedelays) do delay
 
-    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=2000, rhomin=0.01, rhomax = 2000, delays = [0;d], numberofrestarts=10)[1])
+    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=2000, rhomin=0.01, rhomax = 2000, delays = [0; delay], numberofrestarts=10)[1]
     
 end;
 
