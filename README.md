@@ -48,7 +48,7 @@ candidatedelays = collect(0.0:0.2:maxt)
 # warmup 
 @showprogress pmap(candidatedelays[1:2*nworkers()]) do delay
 
-    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=1,rhomin=0.01, rhomax = 2000, delays = [0; delay], numberofrestarts=1)[1])
+    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=1,rhomin=0.01, rhomax = 2000, delays = [0; delay], numberofrestarts=1)[1]
     
 end
 
