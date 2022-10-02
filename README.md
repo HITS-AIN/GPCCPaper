@@ -43,7 +43,7 @@ tobs, yobs, σobs,  = readdataset(source = "3C120");
 
 maxt = maximum(map(maximum, tobs)) # find maximum observed time 
 
-candidatedelays = collect(0.0:0.1:maxt)
+candidatedelays = collect(0.0:0.2:maxt)
 
 # warmup 
 @showprogress pmap(candidatedelays[1:2*nworkers()]) do delay
@@ -54,7 +54,7 @@ end
 
 loglikel = @showprogress pmap(candidatedelays) do delay
 
-    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=2000, rhomin=0.01, rhomax = 2000, delays = [0; delay], numberofrestarts=10)[1]
+    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=2000, rhomin=0.01, rhomax = 2000, delays = [0; delay], numberofrestarts=7)[1]
     
 end;
 
