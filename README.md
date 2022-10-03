@@ -63,6 +63,7 @@ plot(candidatedelays, getprobabilities(loglikel))
 title("posterior delay for 3C120")
 ```
 
+To obtain posterior delays for other objects, we simply replace 3C120 in `tobs, yobs, σobs,  = readdataset(source = "3C120")` with the name of another object.
 
 <!---
 
