@@ -17,7 +17,7 @@ We align the light curves according to these two candidate delays. We note that 
 ![exp1_peak_13.8](plots/Synthetic/Synthetic_sigma_0.2_peak_13.8.svg)
 
 
-## ▶ "Virial" datasets
+## ▶ Datasets
 
 
 #object   | v   |  ev |  mass | emass |  delay|edelay | z     | luminosity|
