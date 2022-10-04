@@ -10,17 +10,17 @@ using ADDatasets
 
 using PyPlot # we need this to plot the posterior probabilities, must be independently installed
 
-candidatedelays = collect(0.0:0.1:20)
+candidatedelays = collect(0.0:0.05:20)
 
 
-tobs, yobs, σobs = let
+lambda, tobs, yobs, σobs = let
 
     lambda, tobs, yobs, σobs = readdataset(source = "Mgc0811")
 
     # select indices that correspond to 5100, 7700 and 9100.0
     idx = [6, 4, 5]
 
-    tobs[idx], yobs[idx], σobs[idx]
+    lambda[idx], tobs[idx], yobs[idx], σobs[idx]
 
 end
 
@@ -33,7 +33,7 @@ let
     end
 end
 
-out = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = 1000, rhomax = 300)[1]), candidatedelays), candidatedelays);
+out = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = 2000, rhomax = 2000)[1]), candidatedelays), candidatedelays);
 
 # posterior = getprobabilities(reduce(vcat, out));
 
