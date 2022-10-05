@@ -128,7 +128,7 @@ title("marginal posterior for 9100")
 plot(candidatedelays,vec(sum(posterior,dims=1)), lw = 4)
 
 ```
-![Mgc0811](plots/Synthetic/2Dposterior_Mgc0811.png)
+![Mgc0811](2Dposterior_Mgc0811.png)
 
 
 
