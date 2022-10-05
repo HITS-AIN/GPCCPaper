@@ -1,6 +1,6 @@
-using Distributed
+#using Distributed
 
-addprocs(8) 
+#addprocs(8) 
 
 @everywhere using GPCC # make sure GPCC is made available to all workers
 
