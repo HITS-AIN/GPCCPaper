@@ -28,6 +28,8 @@ Mrk1501   |3321 | 107 | 33.4e6| 4.9e6 | 13.8  |  5.4  | 0.0893| 2.09e44   |
 Mrk6      |3714 | 68  | 24.8e6| 2.3e6 | 10.2  |  1.2  | 0.0188| 5.62e43   |
 PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630| 1.41e44   |
 
+The data can be conveniently accessed [here](https://github.com/ngiann/GPCCData.jl).
+
 ### Posterior for 3C120
 
 We obtained the posterior delay for 3C120 using the following:
