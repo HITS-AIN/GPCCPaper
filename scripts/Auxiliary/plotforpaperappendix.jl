@@ -1,3 +1,4 @@
+using GLMakie, CairoMakie, Statistics, StatsFuns, GPCC, Statistics
 
 function plotforpaperappendix()
 
@@ -5,7 +6,7 @@ function plotforpaperappendix()
 
     fig = GLMakie.Figure(resolution = (3600, 1000), fontsize = 44)
    
-    tobs, yobs, __σobs__UNUSED = simulatetwolightcurves(σ=1.0)
+    tobs, yobs, σobs = simulatetwolightcurves(σ=1.0)
 
     GLMakie.Label(fig[0, 1:3], text = "Aligned synthetic lightcurves", textsize = 46)
 
