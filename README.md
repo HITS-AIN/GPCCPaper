@@ -43,9 +43,7 @@ using PyPlot
 
 tobs, yobs, σobs,  = readdataset(source = "3C120");
 
-maxt = maximum(map(maximum, tobs)) # find maximum observed time 
-
-candidatedelays = collect(0.0:0.2:maxt)
+candidatedelays = collect(0.0:0.2:140)
 
 # warmup 
 @showprogress pmap(candidatedelays[1:2*nworkers()]) do delay
