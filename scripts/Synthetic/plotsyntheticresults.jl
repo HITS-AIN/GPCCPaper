@@ -21,12 +21,12 @@ function plotsyntheticresults()
 
     GL = fig[1:4, 1:2] = GridLayout()
 
-    for (index, σ) in enumerate([0.01; 0.1; 0.2; 1.0]) # left out σ=0.5 and σ=1.5
+    for (index, σ) in enumerate([0.1; 0.5; 1.0; 1.5]) # left out σ=0.01, σ=0.2.
 
         
         # Plot simulated data
         
-        tobs, yobs, __σobs__UNUSED = simulatedata(σ=σ)
+        tobs, yobs, __σobs__UNUSED = simulatetwolightcurves(σ=σ)
         
         ax1 = Axis(GL[index, 1], xlabel = "days", ylabel = "flux")
         
@@ -42,9 +42,9 @@ function plotsyntheticresults()
         
         @printf("Loading file %s\n", filename)
         
-        results, delays = JLD2.load(filename, "out", "delays")
+        results, delays = JLD2.load(filename, "loglikel", "delays")
         
-        ax2 = Axis(GL[index, 2], xlabel = "delay in days", ylabel = L"\mathbf{\pi^{(CV)}}", ylabelsize = 44)
+        ax2 = Axis(GL[index, 2], xlabel = "delay in days", ylabel = L"\mathbf{\pi}", ylabelsize = 44)
         
         lines!(ax2, delays, getprobabilities(results), linewidth=4)
 
