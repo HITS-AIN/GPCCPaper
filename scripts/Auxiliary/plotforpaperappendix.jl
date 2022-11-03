@@ -3,7 +3,7 @@ function plotforpaperappendix()
 
     GLMakie.activate!()
 
-    fig = GLMakie.Figure(resolution = (2400, 2400/2), fontsize = 44)
+    fig = GLMakie.Figure(resolution = (3600, 1000), fontsize = 44)
    
     tobs, yobs, __σobs__UNUSED = simulatetwolightcurves(σ=1.0)
 
