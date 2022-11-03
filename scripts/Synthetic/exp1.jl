@@ -13,7 +13,7 @@ function runme(σ; maxiter=1, numberofrestarts=1)
 
     @printf("Trying out %d delay combinations in parallel\n", length(delays))
 
-    out = @showprogress pmap(τ -> (@suppress gpcc(tobs, yobs, σobs; iterations = maxiter, rhomax = 300, numberofrestarts = numberofrestarts, delays = [0;τ], kernel = GPCC.matern32)), delays)
+    out = @showprogress pmap(τ -> (@suppress gpcc(tobs, yobs, σobs; iterations = maxiter, rhomax = 300, numberofrestarts = numberofrestarts, delays = [0;τ], kernel = GPCC.matern32)[1]), delays)
 
     return out, delays,tobs, yobs, σobs
 
