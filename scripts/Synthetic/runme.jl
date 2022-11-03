@@ -1,6 +1,6 @@
 @everywhere using GPCC
-using JLD2
-using ProgressMeter, Suppressor, Printf
+using JLD2, ProgressMeter, Suppressor, Printf # need to be indepedently installed
+
 
 
 function runme(σ; maxiter=1, numberofrestarts=1)
@@ -20,11 +20,6 @@ function runme(σ; maxiter=1, numberofrestarts=1)
 end
 
 
-# warmup
-runme(1.0; maxiter=1, numberofrestarts=1)
-runme(1.0; maxiter=1, numberofrestarts=1)
-
-
 function properrun()
 
     for σ in [0.01; 0.1; 0.2; 0.5; 1.0; 1.5]
@@ -40,3 +35,11 @@ function properrun()
     end
 
 end
+
+
+
+# warmup
+runme(1.0; maxiter=1, numberofrestarts=1)
+runme(1.0; maxiter=1, numberofrestarts=1)
+
+properrun()
