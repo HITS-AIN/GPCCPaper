@@ -12,12 +12,12 @@ function plotaligned(tobs, yobs, σobs; kernel = kernel, delays = delays, rhomax
 
     @assert(length(tobs) == length(yobs) == length(delays) == length(b) == length(α) == 2)
 
-    fig = Figure(resolution=(3840,2400/2),fontsize = 44)
+    fig = GLMakie.Figure(resolution=(3840,2400/2),fontsize = 44)
 
     display(fig) 
 
     # ax = Axis(fig[1,1],title = "Synthetic curves, σ=0.2, aligned at delay 14.0", xlabel = "days", ylabel = "flux")
-    ax = Axis(fig[1,1],title = "", xlabel = "days", ylabel = "flux")
+    ax = GLMakie.Axis(fig[1,1],title = "", xlabel = "Days", ylabel = "Flux")
     
     # ax.xticks = LinearTicks(30)
 
@@ -25,9 +25,9 @@ function plotaligned(tobs, yobs, σobs; kernel = kernel, delays = delays, rhomax
 
     # xlims!(ax, 0, τmax*1.01) #; ylims!(ax, 0.3, maxy)
 
-    scatter!(ax, tobs[1] .- delays[1], 1 / α[1] * (yobs[1] .- b[1]), color=:blue, markersize=18)
+    GLMakie.scatter!(ax, tobs[1] .- delays[1], 1 / α[1] * (yobs[1] .- b[1]), color=:blue, markersize=24)
 
-    scatter!(ax, tobs[2] .- delays[2], 1 / α[2] * (yobs[2] .- b[2]), color=:red, markersize=18)
+    GLMakie.scatter!(ax, tobs[2] .- delays[2], 1 / α[2] * (yobs[2] .- b[2]), color=:red, markersize=24)
 
 
     fig
