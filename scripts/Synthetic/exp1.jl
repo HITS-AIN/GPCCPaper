@@ -5,7 +5,7 @@ using ProgressMeter, Suppressor, Printf
 
 function runme(σ; maxiter=1, numberofrestarts=1)
 
-    tobs, yobs, σobs = simulatedata(σ=σ)
+    tobs, yobs, σobs = simulatetwolightcurves(σ=σ)
 
     τmax = maximum(maximum.(tobs)) - minimum(minimum.(tobs))
 
@@ -13,7 +13,7 @@ function runme(σ; maxiter=1, numberofrestarts=1)
 
     @printf("Trying out %d delay combinations in parallel\n", length(delays))
 
-    out = @showprogress pmap(τ -> (@suppress performcv(tobs, yobs, σobs; iterations = maxiter, numberofrestarts = numberofrestarts, delays = [0;τ], kernel = GPCC.matern32)), delays)
+    out = @showprogress pmap(τ -> (@suppress gpcc(tobs, yobs, σobs; iterations = maxiter, rhomax = 300, numberofrestarts = numberofrestarts, delays = [0;τ], kernel = GPCC.matern32)), delays)
 
     return out, delays,tobs, yobs, σobs
 
