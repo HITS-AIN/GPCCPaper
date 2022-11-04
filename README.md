@@ -2,22 +2,23 @@
 
 Results obtained with [GPCC.jl](https://github.com/ngiann/GPCC.jl) using data available in [GPCCData.jl](https://github.com/ngiann/GPCCData.jl).
 
-## ▶ Synthetic data drawn from GP with matern32 kernel
+## ▶ Synthetic observations drawn from GP with OU kernel
 
 We generate synthetic data  that conform to the model with increasing noise levels.We note how various other peaks arise as the noise increases. In the presence of low noise, the true peak at 2 days is the incontestable winner. Beyond that, other peaks start to appear as potential candidates.
 
-![exp1_lightcurves](plots/Synthetic/Synthetic_lightcurves.svg)
-![exp1_delays_vs_prob](plots/Synthetic/Synthetic_delays_vs_prob.svg)
 
 
-Let us look closer at case σ=0.2. We see that there are two peaks: the true peak at 2 days and a second higher peak at ~13.8 days.
-We align the light curves according to these two candidate delays. We note that the second peak, which is not the true peak, does lead to a plausible alignment. 
-
-![exp1_peak_2](plots/Synthetic/Synthetic_sigma_0.2_peak_2.0.svg)
-![exp1_peak_13.8](plots/Synthetic/Synthetic_sigma_0.2_peak_13.8.svg)
+![synth_align](scripts/Synthetic/synth_posteriors.png)
 
 
-## ▶ Datasets
+Let us look closer at case σ=1.0. We see that there is the true peak at two days and large peaks towards the right end of the posterior plot.
+We align the light curves according to these two candidate peaks. We note that they also seem to lead to plausible alignments. 
+
+![synth_align](scripts/Synthetic/synth_aligned_at_three_delays.png)
+
+
+
+## ▶ Real observations
 
 
 #object   | v   |  ev |  mass | emass |  delay|edelay | z     | luminosity|
@@ -28,7 +29,7 @@ Mrk1501   |3321 | 107 | 33.4e6| 4.9e6 | 13.8  |  5.4  | 0.0893| 2.09e44   |
 Mrk6      |3714 | 68  | 24.8e6| 2.3e6 | 10.2  |  1.2  | 0.0188| 5.62e43   |
 PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630| 1.41e44   |
 
-The data can be conveniently accessed [here](https://github.com/ngiann/GPCCData.jl).
+The data can be conveniently accessed [here](https://github.com/HITS-AIN/GPCCData.jl).
 
 ### Posterior for 3C120
 
