@@ -1,6 +1,6 @@
 # GPCCPaper
 
-Results obtained with [GPCC.jl](https://github.com/ngiann/GPCC.jl) using data available in [GPCCData.jl](https://github.com/ngiann/GPCCData.jl).
+Results obtained with [GPCC.jl](https://github.com/HITS-AIN/GPCC.jl) using data available in [GPCCData.jl](https://github.com/HITS-AIN/GPCCData.jl).
 
 ## ▶ Synthetic observations drawn from GP with OU kernel
 
