@@ -6,7 +6,7 @@
 end
 
 
-using GPCCData, Printf
+using GPCCData, Printf, JLD2
 
 
 function run_threelightcurves(; candidatedelays = collect(0.0:0.05:20), iterations = 2000)
@@ -19,8 +19,7 @@ function run_threelightcurves(; candidatedelays = collect(0.0:0.05:20), iteratio
 
         idx = [6, 4, 5]
 
-        @printf("Using the following wavelengths:\n")
-        display(lambda[idx])
+        @printf("Using the following wavelengths:\n"); display(lambda[idx])
 
         lambda[idx], tobs[idx], yobs[idx], σobs[idx]
 
