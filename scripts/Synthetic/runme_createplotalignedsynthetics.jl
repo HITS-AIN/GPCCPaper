@@ -41,6 +41,8 @@ function createplotalignedsynthetics()
         
         GLMakie.lines!(ax1, trange, 1 / α[1] * (pred(trange)[1][1] .- b[1]), linewidth=6, color="black")
     
+        ylims!(ax1, -4, 4)
+
     end
 
     filename = "synth_aligned_at_three_delays.png"
