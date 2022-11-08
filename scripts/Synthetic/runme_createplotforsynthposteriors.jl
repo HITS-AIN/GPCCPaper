@@ -1,15 +1,14 @@
 #
 # If problem with CairoMakie, then start with
-# LD_LIBRARY_PATH="" nice ~/julia-1.7.3/bin/julia -O3 
+# LD_LIBRARY_PATH="" julia -O3 
 #
+using Pkg
+Pkg.activate(".")
 using GLMakie, CairoMakie # ❗ important that Makie is imported first 
 using GPCC, Printf, JLD2
 
 
-# Use this to save figure
-# CairoMakie.activate!() ; save(figname, fig) ; GLMakie.activate!()
-
-function plotsyntheticresults()
+function createplotforsynthposteriors()
 
     GLMakie.activate!()
     
@@ -21,10 +20,10 @@ function plotsyntheticresults()
 
     GL = fig[1:4, 1:2] = GridLayout()
 
-    for (index, σ) in enumerate([0.1; 0.5; 1.0; 1.5]) # left out σ=0.01, σ=0.2.
+    for (index, σ) in enumerate([0.1; 0.5; 1.0; 1.5])
 
         
-        # Plot simulated data
+        # Plot simulated data in left column
         
         tobs, yobs, __σobs__UNUSED = simulatetwolightcurves(σ=σ)
         
@@ -36,7 +35,7 @@ function plotsyntheticresults()
         
 
 
-        # Plot delay posterior
+        # Plot delay posterior in right column
         
         filename = @sprintf("results_synthetic_%.2f.jld2", σ)
         
@@ -54,6 +53,15 @@ function plotsyntheticresults()
         
     end
     
-    fig
+
+    filename = "synth_posteriors.png"
+    
+    @printf("Saving plot in file %s\n", filename)
+
+    CairoMakie.activate!() ; save(filename, fig) ; GLMakie.activate!()
+
+    return fig
 
 end
+
+fig = createplotforsynthposteriors()

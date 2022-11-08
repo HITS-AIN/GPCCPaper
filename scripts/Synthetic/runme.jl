@@ -1,9 +1,14 @@
-@everywhere using GPCC
-using JLD2, ProgressMeter, Suppressor, Printf # need to be indepedently installed
+@everywhere begin
+    using Pkg
+    Pkg.activate(".")
+    using GPCC
+end
+
+using JLD2, ProgressMeter, Suppressor, Printf # may need to be indepedently installed
 
 
 
-function runme(σ; maxiter=1, numberofrestarts=1)
+function runexperiment(σ; maxiter=1, numberofrestarts=1)
 
     tobs, yobs, σobs = simulatetwolightcurves(σ=σ)
 
@@ -24,7 +29,7 @@ function properrun()
 
     for σ in [0.01; 0.1; 0.2; 0.5; 1.0; 1.5]
 
-        loglikel, delays, tobs, yobs, σobs  = runme(σ; maxiter = 1000, numberofrestarts = 5)
+        loglikel, delays, tobs, yobs, σobs  = runexperiment(σ; maxiter = 1000, numberofrestarts = 5)
 
         filename = @sprintf("results_synthetic_%.2f.jld2", σ)
 
@@ -39,7 +44,7 @@ end
 
 
 # warmup
-runme(1.0; maxiter=1, numberofrestarts=1)
-runme(1.0; maxiter=1, numberofrestarts=1)
+runexperiment(1.0; maxiter=1, numberofrestarts=1)
+runexperiment(1.0; maxiter=1, numberofrestarts=1)
 
 properrun()

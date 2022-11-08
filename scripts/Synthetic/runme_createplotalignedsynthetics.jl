@@ -1,6 +1,10 @@
-using GLMakie, CairoMakie, Statistics, StatsFuns, GPCC, Statistics
+using Pkg
+Pkg.activate(".")
+using GLMakie, CairoMakie # ❗ important that Makie is imported first 
+using GPCC, Printf, JLD2
+using Statistics, StatsFuns
 
-function plotforpaperappendix()
+function createplotalignedsynthetics()
 
     GLMakie.activate!()
 
@@ -39,6 +43,15 @@ function plotforpaperappendix()
     
     end
 
-    fig
+    filename = "synth_aligned_at_three_delays.png"
+    
+    @printf("Saving plot in file %s\n", filename)
+
+    CairoMakie.activate!() ; save(filename, fig) ; GLMakie.activate!()
+
+    return fig
 
 end
+
+
+fig = createplotalignedsynthetics()
