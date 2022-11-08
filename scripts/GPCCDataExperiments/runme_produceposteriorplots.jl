@@ -46,6 +46,10 @@ function runme_produceposteriorplots()
         
         GLMakie.lines!(ax, candidatedelays, posterior, linewidth=6, color="black")
     
+        ax.xticks = 0:5:55
+
+        @printf("\t Plotting x-axis in interval 0-60\n")
+        xlims!(ax, 0, 60)
 
         # Save figure in file
 
