@@ -2,5 +2,6 @@
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
 GPCC = "4498ab02-56af-48f6-b5af-4c1c07c71523"
+GPCCData = "6ae24528-df3b-47a6-8d0b-c8e9925c8a04"
 ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
 Suppressor = "fd094767-a336-5f1f-9728-57cf17d0bbfb"
