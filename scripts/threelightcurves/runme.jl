@@ -9,7 +9,7 @@ end
 using GPCCData, Printf, JLD2
 
 
-function run_threelightcurves(; candidatedelays = collect(0.0:0.05:20), iterations = 2000)
+function run_threelightcurves(; candidatedelays = collect(0.0:0.1:20), iterations = 2000)
 
     lambda, tobs, yobs, σobs = let
 
