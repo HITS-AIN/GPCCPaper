@@ -2,6 +2,8 @@
 
 Results obtained with [GPCC.jl](https://github.com/HITS-AIN/GPCC.jl) using data available in [GPCCData.jl](https://github.com/HITS-AIN/GPCCData.jl).
 
+To reproduce the results you will need to add the [AINJuliaRegistry](https://github.com/HITS-AIN/AINJuliaRegistry).
+
 ## ▶ Synthetic observations drawn from GP with OU kernel
 
 We generate synthetic data  that conform to the model with increasing noise levels.We note how various other peaks arise as the noise increases. In the presence of low noise, the true peak at 2 days is the incontestable winner. Beyond that, other peaks start to appear as potential candidates.
@@ -36,7 +38,7 @@ We compute the following posteriors:
 
 
 
-The above results can be reproduced by following the instructions here.
+The above results can be reproduced by following the instructions [here](scripts/GPCCDataExperiments/README.md).
 
 
 ### Posterior for Mgc0811, three lightcurves 
