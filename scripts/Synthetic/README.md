@@ -1,7 +1,6 @@
 This directory contains code that reproduces the results and plots for the synthetic simulations.
 
-
-The scripts to be executed below should be able to take care of installing all relevant software necessary for computing the results and creating plots.
+The scripts below should take care of installing all relevant software necessary for computing the results and creating plots.
 
 
 By simply using in the julia REPL:
