@@ -16,6 +16,7 @@ We align the light curves according to these two candidate peaks. We note that t
 
 ![synth_align](scripts/Synthetic/synth_aligned_at_three_delays.png)
 
+These synthetic experiments can be reproduced following instructions [here](scripts/Synthetic/README.md) and the code located in the corresponding folder.
 
 
 ## ▶ Real observations
