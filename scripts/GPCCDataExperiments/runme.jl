@@ -3,13 +3,15 @@
 # using Distributed
 # addprocs(16)
 
-@everywhere using GPCC
-@everywhere using ProgressMeter, Suppressor # need to be indepedently installed
+@everywhere begin
+    using Pkg
+    Pkg.activate(".")
+    using GPCC
+    using ProgressMeter, Suppressor
+end
 
-using GPCCData  # needs to be indepedently installed
-using PyPlot    # needs to be indepedently installed
 using Printf
-using JLD2      # needs to be indepedently installed
+using JLD2
 
 
 function getlikelihoods(datasetname; WARMUP = WARMUP)
@@ -57,7 +59,7 @@ function runalldatasets()
 
         @printf("\tStore result in file called %s\n\n", filename)
         
-        candidatedelays, loglikel = getlikelihoods("3C120"; WARMUP = false)
+        candidatedelays, loglikel = getlikelihoods(d; WARMUP = false)
 
         JLD2.save(filename, "candidatedelays", candidatedelays, "loglikel",  loglikel,  "d", d)
 
