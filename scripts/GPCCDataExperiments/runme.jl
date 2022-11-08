@@ -1,7 +1,4 @@
 # Start julia with "julia -O3 -p16" where 16 means 16 parallel workers.
-# Alternatively, use the two lines below to start within julia multiple parallel workers.
-# using Distributed
-# addprocs(16)
 
 @everywhere begin
     using Pkg
@@ -10,6 +7,7 @@
     using ProgressMeter, Suppressor
 end
 
+using GPCCData
 using Printf
 using JLD2
 
@@ -38,7 +36,7 @@ function getlikelihoods(datasetname; WARMUP = WARMUP)
 
     loglikel = @showprogress pmap(candidatedelays) do delay
 
-        @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations = 2000, rhomin=0.01, rhomax = 2000, delays = [0; delay], numberofrestarts = 7, seed = 1)[1]
+        @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations = 2000, rhomin=0.01, rhomax = 2000, delays = [0; delay], numberofrestarts = 5, seed = 1)[1]
         
     end
 
