@@ -36,7 +36,11 @@ The data can be conveniently accessed [here](https://github.com/HITS-AIN/GPCCDat
 
 We compute the following posteriors:
 
-
+![Mrk335](scripts/GPCCDataExperiments/posterior_Mrk335.png)
+![Mrk1501](scripts/GPCCDataExperiments/posterior_Mrk1501.png)
+![3C120](scripts/GPCCDataExperiments/posterior_3C120.png)
+![Mrk6](scripts/GPCCDataExperiments/posterior_Mrk6.png)
+![PG2130099](scripts/GPCCDataExperiments/posterior_PG2130099.png)
 
 The above results can be reproduced by following the instructions [here](scripts/GPCCDataExperiments/README.md).
 
