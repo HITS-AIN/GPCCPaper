@@ -2,7 +2,13 @@ This directory contains code that reproduces the results and plots for the synth
 
 The code reproduces the following  plot:
 
-![mgc0811](scripts/threelightcurves/2Dposterior_Mgc0811.png)
+
+<p align="center">
+
+<img src="https://github.com/HITS-AIN/GPCCPaper/blob/2c7fc0a8ea5244d06043382e03432a08225ed0fd/scripts/threelightcurves/2Dposterior_Mgc0811.png"  style="width:500px;height:500px;">
+
+</p>
+
 
 The scripts below should take care of installing all relevant software necessary for computing the results and creating plots.
 
