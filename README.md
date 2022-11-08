@@ -32,40 +32,12 @@ PG2130099 |1825 | 65  | 8.3e6 | 0.7e6 | 9.7   |  1.3  | 0.0630| 1.41e44   |
 
 The data can be conveniently accessed [here](https://github.com/HITS-AIN/GPCCData.jl).
 
-### Posterior for 3C120
+We compute the following posteriors:
 
-We obtained the posterior delay for 3C120 using the following:
-```
-using Distributed
-addprocs(16) 
-@everywhere using GPCC
-@everywhere using ProgressMeter, Suppressor # need to be indepedently installed
-using GPCCData
-using PyPlot
 
-tobs, yobs, σobs,  = readdataset(source = "3C120");
 
-candidatedelays = collect(0.0:0.2:140)
+The above results can be reproduced by following the instructions here.
 
-# warmup 
-@showprogress pmap(candidatedelays[1:2*nworkers()]) do delay
-
-    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=1,rhomin=0.01, rhomax = 2000, delays = [0; delay], numberofrestarts=1)[1]
-    
-end
-
-loglikel = @showprogress pmap(candidatedelays) do delay
-
-    @suppress gpcc(tobs, yobs, σobs; kernel = GPCC.OU, iterations=2000, rhomin=0.01, rhomax = 2000, delays = [0; delay], numberofrestarts=7)[1]
-    
-end;
-
-plot(candidatedelays, getprobabilities(loglikel))
-
-title("posterior delay for 3C120")
-```
-
-To obtain posterior delays for other objects, we simply replace 3C120 in `tobs, yobs, σobs,  = readdataset(source = "3C120")` with the name of another object.
 
 ### Posterior for Mgc0811, three lightcurves 
 
