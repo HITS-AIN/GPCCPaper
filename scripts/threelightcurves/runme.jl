@@ -9,7 +9,7 @@ end
 using GPCCData, Printf
 
 
-function run_threelightcurves(; candidatedelays = collect(0.0:0.05:20))
+function run_threelightcurves(; candidatedelays = collect(0.0:0.05:20), iterations = 2000)
 
     lambda, tobs, yobs, σobs = let
 
@@ -27,7 +27,7 @@ function run_threelightcurves(; candidatedelays = collect(0.0:0.05:20))
     end
 
 
-    loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = 2000, rhomax = 2000)[1]), candidatedelays), candidatedelays);
+    loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = iterations, rhomax = 2000)[1]), candidatedelays), candidatedelays);
 
     filename = "three_lightcurves.jld2"
 
@@ -40,26 +40,10 @@ function run_threelightcurves(; candidatedelays = collect(0.0:0.05:20))
 end
 
 ## Warmup
-run_threelightcurves(candidatedelays = collect(LinRange(0, 10, nworkers())))
+run_threelightcurves(candidatedelays = collect(LinRange(0, 10, nworkers())), iterations = 2)
 
-run_threelightcurves(candidatedelays = collect(LinRange(0, 10, nworkers())))
+run_threelightcurves(candidatedelays = collect(LinRange(0, 10, nworkers())), iterations = 2)
 
 ## Proper run
 candidatedelays, loglikel = run_threelightcurves()
 
-#     figure()
-#     subplot(311)
-#     title("joint posterior")
-#     pcolor(candidatedelays,candidatedelays,posterior)
-#     ylabel("7700"); xlabel("9100")
-
-#     subplot(312)
-#     title("marginal posterior for 7700")
-#     plot(candidatedelays,vec(sum(posterior,dims=2)), lw=4)
-
-#     subplot(313)
-#     title("marginal posterior for 9100")
-#     plot(candidatedelays,vec(sum(posterior,dims=1)), lw = 4)
-
-
-# end
