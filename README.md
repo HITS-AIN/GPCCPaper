@@ -49,7 +49,7 @@ We compute the following posteriors:
 The above results can be reproduced by following the instructions [here](scripts/GPCCDataExperiments/README.md).
 
 
-### Posterior for Mgc0811, three lightcurves 
+## ▶ Three lightcurve experiment, posterior for Mgc0811
 
 We compute the following posteriors:
 
