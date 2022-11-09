@@ -1,6 +1,10 @@
 # GPCCPaper
 
-Results obtained with [GPCC.jl](https://github.com/HITS-AIN/GPCC.jl) using data available in [GPCCData.jl](https://github.com/HITS-AIN/GPCCData.jl).
+This repository contains scripts for reproducing all the results presented in 
+
+*A Gaussian process cross-correlation approach to time delay estimation for reverberation mapping of active galactic nuclei*
+
+using the implementation at [GPCC.jl](https://github.com/HITS-AIN/GPCC.jl) and the data available at [GPCCData.jl](https://github.com/HITS-AIN/GPCCData.jl).
 
 To reproduce the results you will need to add the [AINJuliaRegistry](https://github.com/HITS-AIN/AINJuliaRegistry).
 
