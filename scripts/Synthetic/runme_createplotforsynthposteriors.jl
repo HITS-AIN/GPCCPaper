@@ -43,7 +43,7 @@ function createplotforsynthposteriors()
         
         results, delays = JLD2.load(filename, "loglikel", "delays")
         
-        ax2 = GLMakie.Axis(GL[index, 2], xlabel = "τ (days)", ylabel = L"\mathbf{\pi}", ylabelsize = 44)
+        ax2 = GLMakie.Axis(GL[index, 2], xlabel = "τ (days)", ylabel = L"\mathbf{\pi}_i", ylabelsize = 44)
         
         GLMakie.lines!(ax2, delays, getprobabilities(results), linewidth=4)
 
