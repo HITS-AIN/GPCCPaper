@@ -1,5 +1,7 @@
 # GPCCPaper
 
+## ℹ What is this?
+
 This repository contains scripts for reproducing all the results presented in 
 
 *A Gaussian process cross-correlation approach to time delay estimation for reverberation mapping of active galactic nuclei*
