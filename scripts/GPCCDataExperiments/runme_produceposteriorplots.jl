@@ -42,7 +42,7 @@ function runme_produceposteriorplots()
 
         # Create axes and label them, also label figure
 
-        ax = Axis(fig[1,1], xlabel = "τ (Days)", ylabel = "Flux", title = d)
+        ax = Axis(fig[1,1], xlabel = "τ (Days)", ylabel = "πᵢ", title = d)
         
         GLMakie.lines!(ax, candidatedelays, posterior, linewidth=6, color="black")
     
