@@ -18,6 +18,6 @@ include("runme_produceposteriorplots.jl")
 ```
 it should be possible to recreate the plots that shows the posterior delay distributions in the paper.
 
-The values displayed in the plot are also saved in CSV files with self-explanatory filenames.
+The values displayed in the plots are also saved in CSV files with self-explanatory filenames.
 
 
