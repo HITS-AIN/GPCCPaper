@@ -9,12 +9,16 @@ end
 end
 
 
-@everywhere function crossvalidation(tobs, yobs, σobs, delay, kernel; K::Int = 5, iterations::Int = 3000)
+@everywhere function crossvalidation(dataset, delay, kernel; K::Int = 5, iterations::Int = 3000)
 
     @assert(K>1)
 
-    @printf("Performing %d-CV for using kernel %s for delay = %.3f\n", K, Symbol(kernel), delay)
+    @printf("Performing %d-CV for dataset %s using kernel %s for delay = %.3f\n", K, dataset, Symbol(kernel), delay)
 
+    
+    # load data
+
+    tobs, yobs, σobs, = readdataset(source = dataset)
 
 
     # form folds for each lightcurve
@@ -66,27 +70,26 @@ end
 
 function WARMUP()
 
-    tobs, yobs, σobs, = readdataset(source = "3C120")
-
-    @showprogress pmap(d -> (@suppress crossvalidation(tobs, yobs, σobs, d, GPCC.OU; K = 2, iterations = 3)), 1:2*nworkers())
+    @showprogress pmap(d -> (@suppress crossvalidation("3C120", d, GPCC.OU; K = 2, iterations = 3)), 1:2*nworkers())
 
 end
+
 
 function properrun(dataset, kernel)
 
     candidatedelays = 0.0:0.2:140
 
-    tobs, yobs, σobs, = readdataset(source = dataset)
-
-    @showprogress pmap(d -> (@suppress crossvalidation(tobs, yobs, σobs, d, kernel; K = 5, iterations = 3000)), candidatedelays)
+    @showprogress pmap(d -> (@suppress crossvalidation(dataset, d, kernel; K = 5, iterations = 3000)), candidatedelays)
 
 end
+
 
 function runexperiment1()
 
     JLD2.save("experiment1.jld2", "results", properrun("3C120", GPCC.OU))
 
 end
+
 
 function runexperiment2()
 
