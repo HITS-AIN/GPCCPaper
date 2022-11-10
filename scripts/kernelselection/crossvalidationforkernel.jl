@@ -75,9 +75,7 @@ function WARMUP()
 end
 
 
-function properrun(dataset, kernel)
-
-    candidatedelays = 0.0:0.2:140
+function properrun(candidatedelays, dataset, kernel)
 
     @showprogress pmap(d -> (@suppress crossvalidation(dataset, d, kernel; K = 5, iterations = 3000)), candidatedelays)
 
@@ -86,13 +84,35 @@ end
 
 function runexperiment1()
 
-    JLD2.save("experiment1.jld2", "results", properrun("3C120", GPCC.OU))
+    candidatedelays = 0.0:0.2:140
+
+    JLD2.save("experiment1.jld2", "results", properrun(candidatedelays, "3C120", GPCC.OU))
 
 end
 
 
 function runexperiment2()
 
-    JLD2.save("experiment2.jld2", "results", properrun("3C120", GPCC.matern32))
+    candidatedelays = 0.0:0.2:140
+
+    JLD2.save("experiment2.jld2", "results", properrun(candidatedelays, "3C120", GPCC.matern32))
+
+end
+
+
+function runexperiment3()
+
+    candidatedelays = 0.0:0.2:140
+
+    JLD2.save("experiment1.jld2", "results", properrun(candidatedelays, "Mrk6", GPCC.OU))
+
+end
+
+
+function runexperiment4()
+
+    candidatedelays = 0.0:0.2:140
+
+    JLD2.save("experiment2.jld2", "results", properrun(candidatedelays, "Mrk6", GPCC.matern32))
 
 end
