@@ -36,9 +36,9 @@ function createplots()
 
     posterior = reshape(posterior, length(candidatedelays), length(candidatedelays));
 
-    lines!(axtop, candidatedelays,vec(sum(posterior,dims=1)))
-    lines!(axright, vec(sum(posterior,dims=2)), candidatedelays)
-    contourf!(axmain, candidatedelays, candidatedelays, posterior)
+    lines!(axtop, candidatedelays,vec(sum(posterior,dims=1)), color =:black, linewidth=4)
+    lines!(axright, vec(sum(posterior,dims=2)), candidatedelays, color =:black, linewidth=4)
+    contourf!(axmain, candidatedelays, candidatedelays, posterior, colormap=Reverse(:grays))
 
     filenamefig = "2Dposterior_Mgc0811.png"
 
