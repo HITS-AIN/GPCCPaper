@@ -58,3 +58,10 @@ We compute the following posteriors:
 ![Mgc0811](scripts/threelightcurves/2Dposterior_Mgc0811.png)
 
 The above results can be reproduced by following the instructions [here](scripts/threelightcurves/README.md).
+
+
+## ▶ Kernel selection via cross-validation
+
+The proposed GPCC model delivers out-of-sample predictions can be subjected to model selection in a cross-validation framework, where a criterion measures the discrepancy of predictions on held out test data. This allows us to compare GPCC to other models. It also allows us to select the kernel function.
+
+## ▶ ESO399-IG20
