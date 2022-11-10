@@ -13,7 +13,7 @@ end
 
     @assert(K>1)
 
-    @printf("Performing %d-CV for dataset %s using kernel %s for delay = %.3f\n", K, Symbol(kernel), delay)
+    @printf("Performing %d-CV for using kernel %s for delay = %.3f\n", K, Symbol(kernel), delay)
 
 
 
