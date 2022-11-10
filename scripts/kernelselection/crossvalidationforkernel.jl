@@ -9,11 +9,11 @@ end
 end
 
 
-@everywhere function crossvalidation(tobs, yobs, σobs, delay, dataset, kernel; K::Int = 5, iterations::Int = 3000)
+@everywhere function crossvalidation(tobs, yobs, σobs, delay, kernel; K::Int = 5, iterations::Int = 3000)
 
     @assert(K>1)
 
-    @printf("Performing %d-CV for dataset %s using kernel %s for delay = %.3f\n", K, dataset, Symbol(kernel), delay)
+    @printf("Performing %d-CV for dataset %s using kernel %s for delay = %.3f\n", K, Symbol(kernel), delay)
 
 
 
@@ -66,9 +66,9 @@ end
 
 function WARMUP()
 
-    tobs, yobs, σobs, = readdataset(source = dataset)
+    tobs, yobs, σobs, = readdataset(source = "3C120")
 
-    @showprogress map(d -> (@suppress crossvalidation(tobs, yobs, σobs, d, "3C120", GPCC.OU; K = 2, iterations = 3), 1:2*nworkers()))
+    @showprogress map(d -> (@suppress crossvalidation(tobs, yobs, σobs, d, GPCC.OU; K = 2, iterations = 3), 1:2*nworkers()))
 
 end
 
@@ -78,7 +78,7 @@ function properrun(dataset, kernel)
 
     tobs, yobs, σobs, = readdataset(source = dataset)
 
-    @showprogress map(d -> (@suppress crossvalidation(tobs, yobs, σobs, d, dataset, kernel; K = 5, iterations = 3000), candidatedelays))
+    @showprogress map(d -> (@suppress crossvalidation(tobs, yobs, σobs, d, kernel; K = 5, iterations = 3000), candidatedelays))
 
 end
 
