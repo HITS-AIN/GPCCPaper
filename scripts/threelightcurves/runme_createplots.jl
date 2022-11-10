@@ -1,7 +1,7 @@
 using Pkg
 Pkg.activate(".")
 using GLMakie, CairoMakie 
-using Printf, GPCC, JLD2, Distributions
+using Printf, GPCC, JLD2, Distributions, DelimitedFiles
 
 
 function createplots()
@@ -46,7 +46,26 @@ function createplots()
 
     CairoMakie.activate!() ; save(filenamefig, f) ; GLMakie.activate!()
 
-    return f
+
+    # Save values of joint posterior in file
+
+    filenamejoint = "joint_posterior_Mgc0811.csv"
+
+    @printf("Saving values of joint posterior in file %s\n", filenamejoint)
+
+    writedlm(filenamejoint, posterior)
+
+
+    # Save values of candidate delays in file
+
+    filenamedelays = "candidatedelays_Mgc0811.csv"
+
+    @printf("Saving values of candidate delays in file %s\n", filenamedelays)
+
+    writedlm(filenamedelays, candidatedelays)
+
+
+    nothing
 end
 
 createplots()
