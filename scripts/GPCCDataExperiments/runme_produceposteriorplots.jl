@@ -1,7 +1,7 @@
 using Pkg
 Pkg.activate(".")
 using GLMakie, CairoMakie 
-using Printf, GPCC, JLD2, Distributions
+using Printf, GPCC, JLD2, Distributions, DelimitedFiles
 
 
 function runme_produceposteriorplots()
@@ -10,7 +10,7 @@ function runme_produceposteriorplots()
 
     datasets = ["3C120", "Mrk335", "Mrk6", "Mrk1501", "PG2130099"]
 
-    	
+    
     prior = Dict("3C120"    => uniformpriordelay(L = 9.12e43, z = 0.0330),
                 "Mrk335"    => uniformpriordelay(L = 5.01e43, z = 0.0258),
                 "Mrk6"      => uniformpriordelay(L = 5.62e43, z = 0.0188),
@@ -20,45 +20,66 @@ function runme_produceposteriorplots()
                 	
     for d in datasets
 
+
         # Load results stored in file
 
         filenameresult = "loglikel_"*d*".jld2"
 
-        @printf("Rading file %s\n", filenameresult)
+        @printf("Reading file %s\n", filenameresult)
 
         loglikel, candidatedelays  = JLD2.load(filenameresult, "loglikel", "candidatedelays")
         
 
-        # Calculate posterior
+        # Calculate posteriors using respectively the uniform prior and the flat prior
 
-        posterior = getprobabilities(loglikel, logpdf.(prior[d], candidatedelays))
+        local posterior_unif = getprobabilities(loglikel, logpdf.(prior[d], candidatedelays))
+
+        local posterior_flat = getprobabilities(loglikel)
 
 
-        # Plot posterior
+        # Plot posteriors
 
-        # The line below controls the size of the figure via the resolution argument
+        for (post, label, name) in zip([posterior_unif, posterior_flat], 
+                                       [L"p(\tau)=U(0,\tau_{\text{max}}(l,z))", L"p(\tau)\propto 1"],
+                                       ["unif", "flat"])
 
-        fig = Figure(fontsize = 44, resolution = (2000, 1000)) 
 
-        # Create axes and label them, also label figure
+            # The line below controls the size of the figure via the resolution argument
 
-        ax = Axis(fig[1,1], xlabel = "τ (Days)", ylabel = L"\mathbf{\pi}_i", title = d)
+            fig = Figure(fontsize = 44, resolution = (2000, 1000)) 
+
+
+            # Create axes and label them, also label figure
+
+            ax = Axis(fig[1,1], xlabel = "τ (Days)", ylabel = L"\mathbf{\pi}_i", title = d)
+            
+            GLMakie.lines!(ax, candidatedelays, post, linewidth=6, color="black", label = label)
         
-        GLMakie.lines!(ax, candidatedelays, posterior, linewidth=6, color="black")
-    
-        ax.xticks = 0:5:55
+            axislegend(framevisible = false)
 
-        @printf("\t Plotting x-axis in interval 0-60\n")
-        xlims!(ax, 0, 60)
+            ax.xticks = 0:10:140
 
-        # Save figure in file
 
-        filenamefig = "posterior_"*d*".png"
+            # Save figure in file
 
-        @printf("Saving figure in file %s\n", filenamefig)
+            filenamefig = "posterior_" * name * "_" *d* ".png"
 
-        CairoMakie.activate!() ; save(filenamefig, fig) ; GLMakie.activate!()
+            @printf("Saving figure in file %s\n", filenamefig)
 
+            CairoMakie.activate!() ; save(filenamefig, fig) ; GLMakie.activate!()
+
+
+            # Save values in plot in csv file
+
+            filenamecsv = "posterior_" * name * "_" *d* ".csv"
+
+            @printf("Saving values in file %s\n", filenamecsv)
+
+            writedlm(filenamecsv, [candidatedelays post])
+
+        end
+
+ 
     end
 
 end
