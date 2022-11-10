@@ -45,7 +45,7 @@ function createplotforsynthposteriors()
         
         ax2 = GLMakie.Axis(GL[index, 2], xlabel = "τ (days)", ylabel = L"\mathbf{\pi}_i", ylabelsize = 44)
         
-        GLMakie.lines!(ax2, delays, getprobabilities(results), linewidth=4)
+        GLMakie.lines!(ax2, delays, getprobabilities(results), linewidth=4, color=:black)
 
         ax2.xticks = LinearTicks(20)
 
