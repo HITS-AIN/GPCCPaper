@@ -86,7 +86,7 @@ function runexperiment1()
 
     candidatedelays = 0.0:0.2:140
 
-    JLD2.save("experiment1.jld2", "results", properrun(candidatedelays, "3C120", GPCC.OU))
+    JLD2.save("experiment1.jld2", "candidatedelays", candidatedelays, "results", properrun(candidatedelays, "3C120", GPCC.OU))
 
 end
 
@@ -95,7 +95,7 @@ function runexperiment2()
 
     candidatedelays = 0.0:0.2:140
 
-    JLD2.save("experiment2.jld2", "results", properrun(candidatedelays, "3C120", GPCC.matern32))
+    JLD2.save("experiment2.jld2", "candidatedelays", candidatedelays, "results", properrun(candidatedelays, "3C120", GPCC.matern32))
 
 end
 
@@ -104,7 +104,7 @@ function runexperiment3()
 
     candidatedelays = 0.0:0.2:140
 
-    JLD2.save("experiment3.jld2", "results", properrun(candidatedelays, "Mrk6", GPCC.OU))
+    JLD2.save("experiment3.jld2", "candidatedelays", candidatedelays, "results", properrun(candidatedelays, "Mrk6", GPCC.OU))
 
 end
 
@@ -113,6 +113,6 @@ function runexperiment4()
 
     candidatedelays = 0.0:0.2:140
 
-    JLD2.save("experiment4.jld2", "results", properrun(candidatedelays, "Mrk6", GPCC.matern32))
+    JLD2.save("experiment4.jld2", "candidatedelays", candidatedelays, "results", properrun(candidatedelays, "Mrk6", GPCC.matern32))
 
 end
