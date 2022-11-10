@@ -116,3 +116,11 @@ function runexperiment4()
     JLD2.save("experiment4.jld2", "candidatedelays", candidatedelays, "results", properrun(candidatedelays, "Mrk6", GPCC.matern32))
 
 end
+
+
+WARMUP()
+WARMUP()
+runexperiment1()
+runexperiment2()
+runexperiment3()
+runexperiment4()
