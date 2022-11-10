@@ -4,25 +4,14 @@
     using GPCC
 end
 
-using JLD2
+using JLD2, GPCCData
 using ProgressMeter, Suppressor, Printf
 using DelimitedFiles
 
 
-function readopendaydata()
-
-    xblue, yblue, σblue = readdlm("B.dat")[:,1], readdlm("B.dat")[:,2], readdlm("B.dat")[:,3]
-
-    xred,  yred,  σred  = readdlm("Halpha.dat")[:,1], readdlm("Halpha.dat")[:,2], readdlm("Halpha.dat")[:,3]
-
-    [xblue, xred], [yblue, yred], [σblue, σred]
-
-end
-
-
 function runexperiment(;maxiter=1, numberofrestarts=1, rhomax = rhomax, kernel = kernel, delays = delays)
 
-    tobs, yobs, σobs = readopendaydata()
+    tobs, yobs, σobs, = readdataset(source = "ESO399-IG20")
 
     @printf("Trying out %d delay combinations in parallel with kernel %s\n", length(delays), string(kernel))
 

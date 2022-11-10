@@ -16,9 +16,9 @@ version = "0.1.26"
 
 [[deps.ArrayLayouts]]
 deps = ["FillArrays", "LinearAlgebra", "SparseArrays"]
-git-tree-sha1 = "da237a52d393f60cc04256b7bcd9e7ff328b20cd"
+git-tree-sha1 = "7c3a0ce8d64ad84438b1bf60eca4f003a84e33e1"
 uuid = "4c555306-a7a7-4459-81d9-ec55ddd5c99a"
-version = "0.8.13"
+version = "0.8.14"
 
 [[deps.Artifacts]]
 uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
@@ -97,9 +97,9 @@ uuid = "a8cc5b0e-0ffa-5ad4-8c14-923d3ee1735f"
 version = "4.1.1"
 
 [[deps.DataAPI]]
-git-tree-sha1 = "46d2680e618f8abd007bce0c3026cb0c4a8f2032"
+git-tree-sha1 = "e08915633fcb3ea83bf9d6126292e5bc5c739922"
 uuid = "9a962f9c-6df0-11e9-0e5d-c546b8b5ee8a"
-version = "1.12.0"
+version = "1.13.0"
 
 [[deps.DataStructures]]
 deps = ["Compat", "InteractiveUtils", "OrderedCollections"]
@@ -129,9 +129,9 @@ version = "1.1.0"
 
 [[deps.DiffRules]]
 deps = ["IrrationalConstants", "LogExpFunctions", "NaNMath", "Random", "SpecialFunctions"]
-git-tree-sha1 = "8b7a4d23e22f5d44883671da70865ca98f2ebf9d"
+git-tree-sha1 = "9a95659c283c9018ea99e017aa9e13b7e89fadd2"
 uuid = "b552c78f-8df3-52c6-915a-8e097449b14b"
-version = "1.12.0"
+version = "1.12.1"
 
 [[deps.Distributed]]
 deps = ["Random", "Serialization", "Sockets"]
@@ -139,9 +139,9 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[deps.Distributions]]
 deps = ["ChainRulesCore", "DensityInterface", "FillArrays", "LinearAlgebra", "PDMats", "Printf", "QuadGK", "Random", "SparseArrays", "SpecialFunctions", "Statistics", "StatsBase", "StatsFuns", "Test"]
-git-tree-sha1 = "04db820ebcfc1e053bd8cbb8d8bccf0ff3ead3f7"
+git-tree-sha1 = "bee795cdeabc7601776abbd6b9aac2ca62429966"
 uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
-version = "0.25.76"
+version = "0.25.77"
 
 [[deps.DocStringExtensions]]
 deps = ["LibGit2"]
@@ -199,15 +199,15 @@ uuid = "9fa8497b-333b-5362-9e8d-4d0656e87820"
 
 [[deps.GPCC]]
 deps = ["BlockArrays", "Distributions", "LinearAlgebra", "MiscUtil", "Optim", "Printf", "PyPlot", "Random", "StatsFuns", "Suppressor"]
-git-tree-sha1 = "5c641a1c8116b93899d84ecdcd44f03322926569"
+git-tree-sha1 = "b1c51bd02dbb2ae0c709f81f397d9288cbc37d0d"
 uuid = "4498ab02-56af-48f6-b5af-4c1c07c71523"
-version = "0.1.34"
+version = "0.1.35"
 
 [[deps.GPCCData]]
 deps = ["DelimitedFiles", "JLD2", "Printf", "PyPlot"]
-git-tree-sha1 = "e95e5809e7b897a4de463f746bb1a36418fca40b"
+git-tree-sha1 = "8d7e88e562ddf6fa9e81881ce05646e4d2a241df"
 uuid = "6ae24528-df3b-47a6-8d0b-c8e9925c8a04"
-version = "0.1.8"
+version = "0.1.9"
 
 [[deps.HypergeometricFunctions]]
 deps = ["DualNumbers", "LinearAlgebra", "OpenLibm_jll", "SpecialFunctions", "Test"]
