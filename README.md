@@ -1,5 +1,7 @@
 # GPCCPaper
 
+## ℹ What is this?
+
 This repository contains scripts for reproducing all the results presented in 
 
 *A Gaussian process cross-correlation approach to time delay estimation for reverberation mapping of active galactic nuclei*
@@ -49,7 +51,7 @@ We compute the following posteriors:
 The above results can be reproduced by following the instructions [here](scripts/GPCCDataExperiments/README.md).
 
 
-### Posterior for Mgc0811, three lightcurves 
+## ▶ Three lightcurve experiment, posterior for Mgc0811
 
 We compute the following posteriors:
 

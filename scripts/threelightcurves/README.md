@@ -20,7 +20,7 @@ include("runme.jl")
 you will compute all the posterior delay distributions. 
 The results will be saved in files that use the JLD2 format.
 
-❗ This is a lengthy computation, best run on a larger number of workers!
+❗ This is a lengthy computation, best run on a larger number of workers, preferrably in a cluster environment!
 
 
 Once the results have been computed and saved, by using in the julia REPL:
