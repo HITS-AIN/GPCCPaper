@@ -64,4 +64,9 @@ The above results can be reproduced by following the instructions [here](scripts
 
 The proposed GPCC model delivers out-of-sample predictions. It can be subjected to model selection in a cross-validation framework, where a criterion measures the discrepancy of predictions on held out test data. This allows us to compare GPCC to other models. It also allows us to select the kernel function.
 
+![3C120](scripts/kernelselection/CV_3C120_OU_vs_matern.png)
+![Mrk6](scripts/kernelselection/CV_Mrk6_OU_vs_matern.png)
+
+The above results can be reproduced by following the instructions [here](scripts/kernelselection/README.md).
+
 ## ▶ ESO399-IG20
