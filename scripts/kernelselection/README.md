@@ -17,7 +17,7 @@ Once the results have been computed and saved, by using in the julia REPL:
 ```
 include("runme_createplots.jl")
 ```
-it should be possible to recreate the plots that show the posterior delay distributions in the paper.
+it should be possible to recreate the plots that show the cross-validation performance in the paper.
 
 The values displayed in the plots are also saved in CSV files with self-explanatory filenames.
 
