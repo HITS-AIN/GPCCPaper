@@ -1,6 +1,6 @@
 using Pkg
 Pkg.activate(".")
-using GLMakie, CairoMakie, JLD2, Statistics, Printf
+using GLMakie, CairoMakie, JLD2, Statistics, Printf, DelimitedFiles
 
 
 
@@ -78,6 +78,15 @@ function createplots()
     @printf("\t Matern32: mean cv = %.3f\n", mean(mean.(R2["results"])))
 
 
+    # Save values of CV in file
+
+    filenameCV_3C120_OU_vs_matern = "CV_3C120_OU_vs_matern.csv"
+
+    @printf("\nSaving values of CV in file %s\n", filenameCV_3C120_OU_vs_matern)
+
+    writedlm(filenameCV_3C120_OU_vs_matern, [vec(R1["candidatedelays"]) mean.(R1["results"]) mean.(R2["results"])])
+
+
 
     #---------------------------------#
     #    Create figures for Mrk6      #
@@ -122,6 +131,16 @@ function createplots()
     @printf("\nStatistics for Mrk6 (higher is better)\n")
     @printf("\t      OU: mean cv = %.3f\n", mean(mean.(R3["results"])))
     @printf("\tMatern32: mean cv = %.3f\n", mean(mean.(R4["results"])))
+
+    
+    # Save values of CV in file
+
+    filenameCV_Mrk6_OU_vs_matern = "CV_Mrk6_OU_vs_matern.csv"
+
+    @printf("\nSaving values of CV in file %s\n", filenameCV_Mrk6_OU_vs_matern)
+
+    writedlm(filenameCV_Mrk6_OU_vs_matern, [vec(R3["candidatedelays"]) mean.(R3["results"]) mean.(R4["results"])])
+
 
 end
 
