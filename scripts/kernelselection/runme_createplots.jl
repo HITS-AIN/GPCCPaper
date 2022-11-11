@@ -1,12 +1,19 @@
 using Pkg
 Pkg.activate(".")
-using GLMakie, CairoMakie # ❗ important that Makie is imported first 
-using GPCC, Printf, JLD2
-using Statistics
+using GLMakie, CairoMakie, JLD2, Statistics, Printf
 
 
 
 function createplots()
+
+    #------------------------------#
+    # Control font and figure size #
+    #------------------------------#
+
+    fontsize = 36
+
+    resolution = (800, 800)
+
 
     #----------------------------#
     # Load data from experiments #
@@ -25,6 +32,7 @@ function createplots()
     R4 = JLD2.load("experiment4.jld2") # kernel was GPCC.matern32
 
 
+
     #---------------------------------#
     #    Create figures for 3C120     #
     #---------------------------------#
@@ -33,7 +41,7 @@ function createplots()
 
     GLMakie.activate!()
 
-    fig = GLMakie.Figure(resolution = (1300, 1300), fontsize = 44)
+    fig = GLMakie.Figure(resolution = resolution, fontsize = fontsize)
    
     ax1 = Axis(fig[1,1], xlabel = "Days", ylabel = "log-likelihood")
 
@@ -70,6 +78,7 @@ function createplots()
     @printf("\t Matern32: mean cv = %.3f\n", mean(mean.(R2["results"])))
 
 
+
     #---------------------------------#
     #    Create figures for Mrk6      #
     #---------------------------------#
@@ -78,7 +87,7 @@ function createplots()
 
     GLMakie.activate!()
 
-    fig = GLMakie.Figure(resolution = (1300, 1300), fontsize = 44)
+    fig = GLMakie.Figure(resolution = resolution, fontsize = fontsize)
    
     ax1 = Axis(fig[1,1], xlabel = "Days", ylabel = "log-likelihood")
 
@@ -107,11 +116,12 @@ function createplots()
 
     CairoMakie.activate!() ; save(filename, fig) ; GLMakie.activate!()
 
-     # output statistics to terminal
 
-     @printf("\nStatistics for Mrk6 (higher is better)\n")
-     @printf("\t      OU: mean cv = %.3f\n", mean(mean.(R3["results"])))
-     @printf("\tMatern32: mean cv = %.3f\n", mean(mean.(R4["results"])))
+    # output statistics to terminal
+
+    @printf("\nStatistics for Mrk6 (higher is better)\n")
+    @printf("\t      OU: mean cv = %.3f\n", mean(mean.(R3["results"])))
+    @printf("\tMatern32: mean cv = %.3f\n", mean(mean.(R4["results"])))
 
 end
 
