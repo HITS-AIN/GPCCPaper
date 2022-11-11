@@ -78,7 +78,9 @@ function createplots()
     @printf("\t Matern32: mean cv = %.3f\n", mean(mean.(R2["results"])))
 
 
-    # Save values of CV in file
+    #---------------------------------#
+    #       Create CSV for 3C120      #
+    #---------------------------------#
 
     filenameCV_3C120_OU_vs_matern = "CV_3C120_OU_vs_matern.csv"
 
@@ -132,8 +134,10 @@ function createplots()
     @printf("\t      OU: mean cv = %.3f\n", mean(mean.(R3["results"])))
     @printf("\tMatern32: mean cv = %.3f\n", mean(mean.(R4["results"])))
 
-    
-    # Save values of CV in file
+
+    #---------------------------------#
+    #       Create csv for Mrk6       #
+    #---------------------------------#
 
     filenameCV_Mrk6_OU_vs_matern = "CV_Mrk6_OU_vs_matern.csv"
 
