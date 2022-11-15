@@ -8,7 +8,10 @@ This repository contains scripts for reproducing all the results presented in
 
 using the implementation at [GPCC.jl](https://github.com/HITS-AIN/GPCC.jl) and the data available at [GPCCData.jl](https://github.com/HITS-AIN/GPCCData.jl).
 
+Please clone this repository in order to use it.
+
 To reproduce the results you will need to add the [AINJuliaRegistry](https://github.com/HITS-AIN/AINJuliaRegistry).
+
 
 ## ▶ Synthetic observations drawn from GP with OU kernel
 
