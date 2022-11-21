@@ -26,17 +26,17 @@ function createplots()
 
     @printf("\t Restricting delay axes in interval 0-10\n")
    
-    axtop   = Axis(GL[1, 1], title  = "marginal posterior for 9100", xlabel = "τ (Days)", ylabel = L"\pi_i")
+    axtop   = Axis(GL[1, 1], title  = "marginal posterior for 9100", xlabel = L"τ_3 (Days)", ylabel = L"\pi_i")
     xlims!(axtop, 0, 10)
     axtop.xticks = 0:2:10
    
-    axmain  = Axis(GL[2, 1], xlabel = "9100", ylabel = "7700")
+    axmain  = Axis(GL[2, 1], xlabel = L"9100, \tau_3", ylabel = L"7700, \tau_2")
     xlims!(axmain, 0, 10)
     ylims!(axmain, 0, 10)
     axmain.yticks = 0:2:10
     axmain.xticks = 0:2:10
    
-    axright = Axis(GL[2, 2], title  = "marginal posterior for 7700", ylabel = "τ (Days)", xlabel = L"\pi_i")
+    axright = Axis(GL[2, 2], title  = "marginal posterior for 7700", ylabel = L"τ_2  (Days)", xlabel = L"\pi_i")
     ylims!(axright, 0, 10)
     axright.xticks = 0:0.05:0.1
     axright.yticks = 0:2:10
