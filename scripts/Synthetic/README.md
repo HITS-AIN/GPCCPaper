@@ -1,3 +1,5 @@
+### Contents of directory
+
 This directory contains code that reproduces the results and plots for the synthetic simulations.
 
 The code reproduces the following two plots:
@@ -10,6 +12,17 @@ The code reproduces the following two plots:
 
 The scripts below should take care of installing all relevant software necessary for computing the results and creating plots.
 
+### Installing relevant packages
+
+If the Julia packages necessary for running these scripts are not present in your system, you can install them by:
+
+1. Starting Julia in the directory where the scripts are located.
+2. Switch to package mode with `]` and activate the local environment with `activate .`
+3. Still within package model execute ``instantiate``.
+
+It may take considerable time for Julia to install the necessary packages.
+
+### Running the scripts
 
 By simply using in the julia REPL:
 ```
