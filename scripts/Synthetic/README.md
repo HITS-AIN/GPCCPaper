@@ -10,7 +10,7 @@ The code reproduces the following two plots:
 
 </p>
 
-The scripts below should take care of installing all relevant software necessary for computing the results and creating plots.
+The scripts below should take care of computing the results and creating plots.
 
 ### Installing relevant packages
 
