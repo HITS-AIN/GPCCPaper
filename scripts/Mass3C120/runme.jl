@@ -82,8 +82,20 @@ function runme()
         #-----------------------------------------------#
 
         title = fixdelaytomean ? "Mass distribution for 3C120 with delay fixed to 27.4" : "Mass distribution for 3C120"
+        
+        highestpower = prevpow(10, maximum(samples)) / 10
 
-        ax = Axis(fig[1,1], xlabel = L"M_{BH}(M_\odot)", ylabel = "density", title = title)
+        function customxtick(values)
+            map(values) do v
+                "$(v/highestpower)"
+            end
+        end
+
+        myxticks = round.(collect(LinRange(highestpower, 10*highestpower, 10)))
+
+        powerstr = @sprintf("%d", round(Int, log10(highestpower)))
+
+        ax = Axis(fig[1,1], xlabel = L"M_{BH}(M_\odot)\times 10^%$powerstr", ylabel = "density", title = title, xticks = myxticks, xtickformat = customxtick, yticklabelsvisible = false)
 
         GLMakie.hist!(ax, samples, bins = 250, normalization = :pdf, color = :gray, label="our estimate")
 
