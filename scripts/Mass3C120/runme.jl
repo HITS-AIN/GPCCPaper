@@ -95,7 +95,7 @@ function runme()
 
         powerstr = @sprintf("%d", round(Int, log10(highestpower)))
 
-        ax = Axis(fig[1,1], xlabel = L"M_{BH}(M_\odot)\times 10^%$powerstr", ylabel = "density", title = title, xticks = myxticks, xtickformat = customxtick, yticklabelsvisible = false)
+        ax = Axis(fig[1,1], xlabel = L"M_{BH}(M_\odot)\times 10^%$powerstr", ylabel = "density", title = "", xticks = myxticks, xtickformat = customxtick, yticklabelsvisible = false)
 
         GLMakie.hist!(ax, samples, bins = 250, normalization = :pdf, color = :gray, label="our estimate")
 
