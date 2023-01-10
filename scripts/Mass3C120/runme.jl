@@ -83,7 +83,7 @@ function runme()
 
         title = fixdelaytomean ? "Mass distribution for 3C120 with delay fixed to 27.4" : "Mass distribution for 3C120"
         
-        highestpower = prevpow(10, maximum(samples)) / 10
+       @show highestpower = prevpow(10, minimum(samples))
 
         function customxtick(values)
             map(values) do v
