@@ -72,9 +72,10 @@ The proposed GPCC model delivers out-of-sample predictions. It can be subjected 
 
 The above results can be reproduced by following the instructions [here](scripts/kernelselection/README.md).
 
-## ▶ Mass distribution for 3C120
+## ▶ Mass distribution for 3C120 and Mrk1501
 
-![3C120](scripts/Mass3C120/massdistribution3C120.png)
-![Mrk6](scripts/Mass3C120/massdistribution3C120_fixdelaytomean.png)
+![3C120](scripts/MassDistributions/massdistribution3C120.png)
+![3C120](scripts/MassDistributions/massdistribution3C120_fixdelaytomean.png)
+![Mrk1501](scripts/MassDistributions/massdistributionMrk1501.png)
 
-The above results can be reproduced by following the instructions [here](scripts/Mass3C120/README.md).
+The above results can be reproduced by following the instructions [here](scripts/MassDistributions/README.md).
