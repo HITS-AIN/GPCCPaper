@@ -10,7 +10,7 @@ function createplots()
     # Control font and figure size #
     #------------------------------#
 
-    fontsize = 36
+    fontsize = 26
 
     resolution = (800, 800)
 
