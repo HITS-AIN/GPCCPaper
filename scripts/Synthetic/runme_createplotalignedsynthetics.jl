@@ -1,5 +1,6 @@
 using Pkg
 Pkg.activate(".")
+Pkg.instantiate()
 using GLMakie, CairoMakie # ❗ important that Makie is imported first 
 using GPCC, Printf, JLD2
 using Statistics, StatsFuns
@@ -29,7 +30,7 @@ function createplotalignedsynthetics()
 
         b = mean(posterioroffsetb)
 
-        ax1 = Axis(GL[1, i], xlabel = "Days", ylabel = "Flux")
+        ax1 = Axis(GL[1, i], xlabel = "Time (days)", ylabel = "Flux")
 
         
         GLMakie.scatter!(ax1, tobs[1] .- 0.0, 1 / α[1] * (yobs[1] .- b[1]), color=:blue, markersize=24)
