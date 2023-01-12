@@ -27,7 +27,7 @@ function createplotforsynthposteriors()
         
         tobs, yobs, __σobs__UNUSED = simulatetwolightcurves(σ=σ)
         
-        ax1 = Axis(GL[index, 1], xlabel = "Time (days)", ylabel = "Flux", xticklabelsize = 28)
+        ax1 = Axis(GL[index, 1], xlabel = "Time (days)", ylabel = "Flux (arbitrary units)", xticklabelsize = 28, ylabelsize = 30)
         
         GLMakie.scatter!(ax1, tobs[1], yobs[1], color=:blue, markersize=18)
         
