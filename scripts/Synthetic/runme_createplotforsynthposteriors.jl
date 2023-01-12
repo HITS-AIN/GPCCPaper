@@ -12,7 +12,7 @@ function createplotforsynthposteriors()
 
     GLMakie.activate!()
     
-    fig = GLMakie.Figure(resolution = (1800, 2400), fontsize = 38)
+    fig = GLMakie.Figure(resolution = (1800, 2400), fontsize = 36)
 
     GLMakie.Label(fig[0, 1:2], text = "Synthetic data", textsize = 46)
 
@@ -27,7 +27,7 @@ function createplotforsynthposteriors()
         
         tobs, yobs, __σobs__UNUSED = simulatetwolightcurves(σ=σ)
         
-        ax1 = Axis(GL[index, 1], xlabel = "Days", ylabel = "Flux")
+        ax1 = Axis(GL[index, 1], xlabel = "Time (days)", ylabel = "Flux", xticklabelsize = 28)
         
         GLMakie.scatter!(ax1, tobs[1], yobs[1], color=:blue, markersize=18)
         
@@ -43,13 +43,13 @@ function createplotforsynthposteriors()
         
         results, delays = JLD2.load(filename, "loglikel", "delays")
         
-        ax2 = GLMakie.Axis(GL[index, 2], xlabel = "τ (days)", ylabel = L"\mathbf{\pi}_i", ylabelsize = 44)
+        ax2 = GLMakie.Axis(GL[index, 2], xlabel = "τ (days)", ylabel = L"\mathbf{\pi}_i", xticklabelsize = 28, ylabelsize = 44)
         
         GLMakie.lines!(ax2, delays, getprobabilities(results), linewidth=4, color=:black)
 
         ax2.xticks = LinearTicks(20)
 
-        GLMakie.Label(GL[index, 1:2, Top()], @sprintf("Experiment %d: σ = %0.2f", index, σ), valign = :bottom, padding = (0, 0, 35, 0))
+        GLMakie.Label(GL[index, 1:2, Top()], @sprintf("σ = %0.2f", σ), valign = :bottom, padding = (0, 0, 35, 0))
         
     end
     
