@@ -9,7 +9,7 @@ end
 using GPCCData, Printf, JLD2
 
 
-function run_threelightcurves(; candidatedelays = collect(0.0:0.1:20), iterations = 2000)
+function run_threelightcurves(; candidatedelays = collect(0.0:0.02:20), iterations = 2000)
 
     lambda, tobs, yobs, σobs = let
 
@@ -26,15 +26,40 @@ function run_threelightcurves(; candidatedelays = collect(0.0:0.1:20), iteration
     end
 
 
-    loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = iterations, rhomax = 2000)[1]), candidatedelays), candidatedelays);
+    #------------------#
+    # joint estimation #
+    #------------------#
 
-    filename = "three_lightcurves.jld2"
+    let
 
-    @printf("Saving results in file %s\n", filename)
+        loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = iterations, rhomax = 2000)[1]), candidatedelays), candidatedelays);
 
-    JLD2.save(filename, "candidatedelays", candidatedelays, "loglikel", loglikel)
+        filename = "three_lightcurves.jld2"
 
-    return candidatedelays, loglikel
+        @printf("Saving results in file %s\n", filename)
+
+        JLD2.save(filename, "candidatedelays", candidatedelays, "loglikel", loglikel)
+
+    end
+
+
+    #---------------------#
+    # pairwise estimation #
+    #---------------------#
+
+    let
+
+        loglikel12 = @showprogress pmap(d -> (@suppress gpcc(tobs[[1;2]], yobs[[1;2]], σobs[[1;2]]; kernel = GPCC.matern32, delays = [0;d], iterations = iterations, rhomax = 2000)[1]), candidatedelays)
+        loglikel13 = @showprogress pmap(d -> (@suppress gpcc(tobs[[1;3]], yobs[[1;3]], σobs[[1;3]]; kernel = GPCC.matern32, delays = [0;d], iterations = iterations, rhomax = 2000)[1]), candidatedelays)
+        loglikel23 = @showprogress pmap(d -> (@suppress gpcc(tobs[[2;3]], yobs[[2;3]], σobs[[2;3]]; kernel = GPCC.matern32, delays = [0;d], iterations = iterations, rhomax = 2000)[1]), candidatedelays)
+
+        filename = "three_lightcurves_pairwise.jld2"
+
+        @printf("Saving results in file %s\n", filename)
+
+        JLD2.save(filename, "candidatedelays", candidatedelays, "loglikel12", loglikel12, "loglikel13", loglikel13, "loglikel23", loglikel23)
+
+    end
 
 end
 
