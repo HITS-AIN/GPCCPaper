@@ -40,18 +40,18 @@ function createplots()
     
     ax.xticks = 0:0.5:8
 
-    # GLMakie.lines!(ax, collect(candidatedelays_pair), posterior12, linewidth=4, color=:black, label="pairwise delay between 1, 2")
-    # GLMakie.lines!(ax, collect(candidatedelays_pair), posterior13, linewidth=4, color=:red,   label="pairwise delay between 1, 3")
-    # GLMakie.lines!(ax, collect(candidatedelays_pair), posterior23, linewidth=4, color=:blue,  label="pairwise delay between 2, 3")
+    GLMakie.lines!(ax, collect(candidatedelays_pair), posterior12, linewidth=4, color=:black, label="pairwise delay between 1, 2")
+    GLMakie.lines!(ax, collect(candidatedelays_pair), posterior13, linewidth=4, color=:red,   label="pairwise delay between 1, 3")
+    GLMakie.lines!(ax, collect(candidatedelays_pair), posterior23, linewidth=4, color=:blue,  label="pairwise delay between 2, 3")
 
-    # let
-    #     c12 = Categorical(posterior12)
-    #     c13 = Categorical(posterior13)
-    #     samples = [candidatedelays_pair[rand(c13)] - candidatedelays_pair[rand(c12)] for _ in 1:1_000_000]
-    #     c23pdf = kde(samples)
-    #     GLMakie.lines!(ax, candidatedelays_pair, vec(pdf(c23pdf, candidatedelays_pair)/sum(pdf(c23pdf, candidatedelays_pair))), linewidth=6, color=:cyan, linestyle = :dashdot, label="sss")
+    let
+        c12 = Categorical(posterior12)
+        c13 = Categorical(posterior13)
+        samples = [candidatedelays_pair[rand(c13)] - candidatedelays_pair[rand(c12)] for _ in 1:1_000_000]
+        c23pdf = kde(samples)
+        GLMakie.lines!(ax, candidatedelays_pair, vec(pdf(c23pdf, candidatedelays_pair)/sum(pdf(c23pdf, candidatedelays_pair))), linewidth=6, color=:cyan, linestyle = :dashdot, label="sss")
 
-    # end
+    end
 
 
     # #--------------------------------------------------#
