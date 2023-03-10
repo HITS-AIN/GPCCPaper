@@ -47,9 +47,26 @@ function createplots_pairwise()
     end
 
 
+    #-------------------------------------------#
+    # Print out mean of marginals distributions #
+    #-------------------------------------------#
+
     @printf("Mean of pairwise delay between 1, 2 is \t %.3f\n", sum(posterior12.*delays))
     @printf("Mean of pairwise delay between 1, 3 is \t %.3f\n", sum(posterior13.*delays))
     @printf("Mean of pairwise delay between 2, 3 is \t %.3f\n", sum(posterior23.*delays))
+
+
+    #---------------------#
+    # Save figure in file #
+    #---------------------#
+
+    filenamefig = "marginals_from_pairwise.png"
+
+    @printf("Saving figure in file %s\n", filenamefig)
+
+    CairoMakie.activate!() ; save(filenamefig, fig) ; GLMakie.activate!()
+
+
 
     axislegend(framevisible = false)
 
