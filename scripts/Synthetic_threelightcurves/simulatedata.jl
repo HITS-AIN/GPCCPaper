@@ -9,19 +9,19 @@ function simulatedata(;seed = 1)
 
     ρ = 3.5 # lengthscale
 
-    truedelays = [0.0; 3.0; 5.0]
+    truedelays = [0.0; 4.0; 8.0]
 
     α  = [1; 1.5;   2.0] # scaling coefficients
 
     b  = [6; 15.0; 25.0] # offset coefficients
 
-    σ  = [0.75; 0.75; 0.75]
+    σ  = [1.0; 1.0; 1.0]
 
     #---------------------------------------------------------------------
     # Data generation parameters
     #---------------------------------------------------------------------
 
-    N = [40; 40; 20] # number of data items per band
+    N = [30; 30; 30] # number of data items per band
 
     t = [rand(rg, N[1])*20, rand(rg, N[2])*20, rand(rg, N[3])*20]
 
