@@ -54,12 +54,13 @@ function createplots_joint()
 
     # plot posteriors
     #
-    # 1st light curve is at 5100Å
-    # 2nd light curve is at 7700Å
-    # 3rd light curve is at 9100Å
+    # 1st light curve is at 5100 Å
+    # 2nd light curve is at 7700 Å
+    # 3rd light curve is at 9100 Å
     #
     # to get posterior for delay between 1st and 2nd light curve use sum(posterior,dims=2)
     # to get posterior for delay between 1st and 3rd light curve use sum(posterior,dims=1)
+    #
     lines!(axtop, candidatedelays,vec(sum(posterior,dims=1)), color =:black, linewidth=4)
     lines!(axright, vec(sum(posterior,dims=2)), candidatedelays, color =:black, linewidth=4)
     contourf!(axmain, candidatedelays, candidatedelays, posterior, colormap=Reverse(:grays))
