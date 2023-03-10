@@ -13,7 +13,7 @@ function runme_joint(;maxiter=1)
 
     tobs, yobs, σobs = simulatedata(seed=1)
 
-    candidatedelays = 0.0:0.025:8
+    candidatedelays = 0.0:0.025:11
 
     
     @printf("Trying out %d delay combinations in parallel\n", length(candidatedelays)^2)
@@ -37,7 +37,7 @@ function runme_pairwise(;maxiter=1)
 
     tobs, yobs, σobs = simulatedata(seed=1)
 
-    candidatedelays = 0.0:0.025:8
+    candidatedelays = 0.0:0.025:11
 
     
     @printf("Trying out %d delay combinations in parallel\n", length(candidatedelays))
