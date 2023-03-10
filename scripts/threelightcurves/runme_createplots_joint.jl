@@ -57,12 +57,15 @@ function createplots_joint()
     # 1st light curve is at 5100 Å
     # 2nd light curve is at 7700 Å
     # 3rd light curve is at 9100 Å
-    #
+    
     # to get posterior for delay between 1st and 2nd light curve use sum(posterior,dims=2)
+    posterior12 = vec(sum(posterior,dims=2))
+
     # to get posterior for delay between 1st and 3rd light curve use sum(posterior,dims=1)
-    #
-    lines!(axtop, candidatedelays,vec(sum(posterior,dims=1)), color =:black, linewidth=4)
-    lines!(axright, vec(sum(posterior,dims=2)), candidatedelays, color =:black, linewidth=4)
+    posterior13 = vec(sum(posterior,dims=1))
+
+    lines!(axtop, candidatedelays,posterior13, color =:black, linewidth=4)
+    lines!(axright, posterior12, candidatedelays, color =:black, linewidth=4)
     contourf!(axmain, candidatedelays, candidatedelays, posterior, colormap=Reverse(:grays))
 
    
@@ -90,7 +93,7 @@ function createplots_joint()
 
     @printf("Saving values of marginal posterior 7700 in file %s\n", filenamemarginal7700)
 
-    writedlm(filenamemarginal7700, vec(sum(posterior,dims=2)))
+    writedlm(filenamemarginal7700, posterior12)
 
 
     # Save values of marginal 9100 in file
@@ -99,7 +102,7 @@ function createplots_joint()
 
     @printf("Saving values of marginal posterior 9100 in file %s\n", filenamemarginal9100)
 
-    writedlm(filenamemarginal9100, vec(sum(posterior,dims=1)))
+    writedlm(filenamemarginal9100, posterior13)
 
 
     # Save values of candidate delays in file
