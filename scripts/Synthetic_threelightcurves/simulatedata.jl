@@ -21,7 +21,7 @@ function simulatedata(;seed = 1)
     # Data generation parameters
     #---------------------------------------------------------------------
 
-    N = [30; 30; 30] # number of data items per band
+    N = [40; 40; 40] # number of data items per band
 
     t = [rand(rg, N[1])*20, rand(rg, N[2])*20, rand(rg, N[3])*20]
 

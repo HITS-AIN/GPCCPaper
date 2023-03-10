@@ -46,6 +46,11 @@ function createplots_pairwise()
 
     end
 
+
+    @printf("Mean of pairwise delay between 1, 2 is \t %.3f\n", sum(posterior12.*delays))
+    @printf("Mean of pairwise delay between 1, 3 is \t %.3f\n", sum(posterior13.*delays))
+    @printf("Mean of pairwise delay between 2, 3 is \t %.3f\n", sum(posterior23.*delays))
+
     axislegend(framevisible = false)
 
     fig
