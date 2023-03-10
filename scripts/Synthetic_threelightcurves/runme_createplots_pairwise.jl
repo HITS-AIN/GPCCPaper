@@ -22,25 +22,26 @@ function createplots_pairwise()
     posterior13 = exp.(l13 .- logsumexp(l13))
     posterior23 = exp.(l23 .- logsumexp(l23))
 
-    cat12 = Categorical(posterior12)
-    cat13 = Categorical(posterior13)
-
+    
     #------------------------------------------------------#
     # Plot pairwise inferred posterior delay distributions #
     #------------------------------------------------------#
-
+    
     ax = GLMakie.Axis(fig[1, 1], xlabel = L"\tau\:\textrm{(days)}", ylabel = L"\mathbf{\pi}_i", xticklabelsize = 28, ylabelsize = 44)
     
-    ax.xticks = 0:0.5:8
-
+    ax.xticks = 0:0.5:11
+    
     GLMakie.lines!(ax, delays, posterior12, linewidth=4, color=:black, label="pairwise delay between 1, 2")
     GLMakie.lines!(ax, delays, posterior13, linewidth=4, color=:red,   label="pairwise delay between 1, 3")
     GLMakie.lines!(ax, delays, posterior23, linewidth=4, color=:blue,  label="pairwise delay between 2, 3")
-
+    
     let
-
-        samples = [delays[rand(cat13)] - delays[rand(cat12)] for _ in 1:1_000_000]
-        c23pdf = kde(samples)
+        
+        cat12 = Categorical(posterior12)
+        cat13 = Categorical(posterior13)
+        
+        samples = [(delays[rand(cat13)] - delays[rand(cat12)]) for _ in 1:1_000_000]
+        c23pdf  = kde(samples)
         GLMakie.lines!(ax, delays, vec(pdf(c23pdf, delays)/sum(pdf(c23pdf, delays))), linewidth=6, color=:cyan, label="inferred")
 
     end

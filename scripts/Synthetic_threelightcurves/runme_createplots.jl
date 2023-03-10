@@ -6,7 +6,9 @@ using Printf, GPCC, JLD2, Distributions, DelimitedFiles, StatsFuns, KernelDensit
 
 function createplots()
 
-    # setup figure
+    #--------------#
+    # setup figure #
+    #--------------#
 
     GLMakie.activate!()
 
@@ -14,37 +16,45 @@ function createplots()
 
     display(fig) 
 
+    ax = GLMakie.Axis(fig[1, 1], xlabel = L"\tau\:\textrm{(days)}", ylabel = L"\mathbf{\pi}_i", xticklabelsize = 28, ylabelsize = 44)
+    
+    ax.xticks = 0:0.5:11
+   
 
-    # load results
+    #--------------#
+    # load results #
+    #--------------#
 
-    candidatedelays_joint, loglikel_joint = JLD2.load("results_synthetic_threelightcurves_joint.jld2", "candidatedelays", "loglikel")
+    delays, loglikel_joint = JLD2.load("results_synthetic_threelightcurves_joint.jld2", "candidatedelays", "loglikel")
 
- 
-    # calculate posteriors
+
+    #----------------------#
+    # calculate posteriors #
+    #----------------------#
 
     posterior_joint = getprobabilities(reduce(vcat, loglikel_joint))
 
-    posterior_joint = reshape(posterior_joint, length(candidatedelays_joint), length(candidatedelays_joint));
+    posterior_joint = reshape(posterior_joint, length(delays), length(delays));
 
 
-    # #--------------------------------------------------#
-    # # Plot marginals inferred from joint distributions #
-    # #--------------------------------------------------#
+    #--------------------------------------------------#
+    # Plot marginals inferred from joint distributions #
+    #--------------------------------------------------#
 
     marginal12 = Categorical(vec(sum(posterior_joint,dims=2)))
     marginal13 = Categorical(vec(sum(posterior_joint,dims=1)))
-    samples = [candidatedelays_joint[rand(marginal13)] - candidatedelays_joint[rand(marginal12)] for _ in 1:1_000_000]
+    samples = [(delays[rand(marginal13)] - delays[rand(marginal12)]) for _ in 1:1_000_000]
     marginal23 = kde(samples)
 
-    GLMakie.lines!(ax, candidatedelays_joint, vec(sum(posterior_joint,dims=1)), linewidth=4, color=:red,  linestyle = :dash, label="marginal delay between 1, 2")
-    GLMakie.lines!(ax, candidatedelays_joint, vec(sum(posterior_joint,dims=2)), linewidth=4, color=:black,    linestyle = :dash, label="marginal delay between 1, 3")
-    GLMakie.lines!(ax, candidatedelays_joint, vec(pdf(marginal23, candidatedelays_joint)/sum(pdf(marginal23, candidatedelays_joint))), linewidth=4, color=:blue, linestyle = :dash, label="marginal delay between 2, 3")
+    GLMakie.lines!(ax, delays, vec(sum(posterior_joint,dims=1)), linewidth=4, color=:red,  label="marginal delay between 1, 2")
+    GLMakie.lines!(ax, delays, vec(sum(posterior_joint,dims=2)), linewidth=4, color=:black,    label="marginal delay between 1, 3")
+    GLMakie.lines!(ax, delays, vec(pdf(marginal23, delays)/sum(pdf(marginal23, delays))), linewidth=4, color=:blue, label="marginal delay between 2, 3")
+
 
     axislegend(framevisible = false)
-
-    # nothing
+   
     fig
-    # samples
+
 end
 
 createplots()

@@ -15,7 +15,7 @@ function simulatedata(;seed = 1)
 
     b  = [6; 15.0; 25.0] # offset coefficients
 
-    σ  = [1.0; 1.0; 1.0]
+    σ  = [0.5; 0.5; 0.5]
 
     #---------------------------------------------------------------------
     # Data generation parameters

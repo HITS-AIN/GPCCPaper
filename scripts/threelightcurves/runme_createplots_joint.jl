@@ -4,7 +4,7 @@ using GLMakie, CairoMakie
 using Printf, GPCC, JLD2, Distributions, DelimitedFiles
 
 
-function createplots()
+function createplots_joint()
 
     # setup figure
 
@@ -19,7 +19,7 @@ function createplots()
 
     # load results
 
-    candidatedelays, loglikel = JLD2.load("three_lightcurves.jld2", "candidatedelays", "loglikel")
+    candidatedelays, loglikel = JLD2.load("three_lightcurves_joint.jld2", "candidatedelays", "loglikel")
 
 
     # setup axes
@@ -107,4 +107,4 @@ function createplots()
     nothing
 end
 
-createplots()
+createplots_joint()
