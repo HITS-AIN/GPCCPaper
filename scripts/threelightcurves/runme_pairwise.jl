@@ -44,7 +44,6 @@ end
 
 ## Warmup
 run_threelightcurves_pairwise(candidatedelays = collect(LinRange(0, 10, nworkers())), iterations = 2)
-
 run_threelightcurves_pairwise(candidatedelays = collect(LinRange(0, 10, nworkers())), iterations = 2)
 
 ## Proper run
