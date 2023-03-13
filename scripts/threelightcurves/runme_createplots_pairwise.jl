@@ -28,9 +28,9 @@ function createplots_pairwise()
         posterior23 = exp.(l23 .- logsumexp(l23))
     
 
-        #------------------------------------------------------#
-        # Plot pairwise inferred posterior delay distributions #
-        #------------------------------------------------------#
+        #---------------------------------------------#
+        # Plot pairwise posterior delay distributions #
+        #---------------------------------------------#
     
         ax = GLMakie.Axis(fig[1, 1], xlabel = L"\tau\:\textrm{(days)}", ylabel = L"\mathbf{\pi}_i", xticklabelsize = 28, ylabelsize = 44)
         
