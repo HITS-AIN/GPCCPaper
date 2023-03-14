@@ -9,7 +9,7 @@ function simulatedata(;seed = 1)
 
     ρ = 3.5 # lengthscale
 
-    truedelays = [0.0; 4.0; 8.0]
+    truedelays = [0.0; 3.0; 6.0]
 
     α  = [1; 1.5;   2.0] # scaling coefficients
 

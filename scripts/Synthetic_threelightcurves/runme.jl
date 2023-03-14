@@ -13,22 +13,39 @@ function runme_joint(;maxiter=1)
 
     tobs, yobs, σobs = simulatedata(seed=1)
 
-    candidatedelays = 0.0:0.025:11
+    candidatedelays = -9:0.2:9
 
+    let
+        @printf("Trying out %d delay combinations in parallel\n", length(candidatedelays)^2)
+        
+        loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = maxiter, rhomax = 1000)[1]), candidatedelays), candidatedelays);
     
-    @printf("Trying out %d delay combinations in parallel\n", length(candidatedelays)^2)
+
+        filename = "results_synthetic_threelightcurves_joint.jld2"
+
+        @printf("Writing results in file %s\n", filename)
+
+        JLD2.save(filename, "loglikel", loglikel, "candidatedelays", collect(candidatedelays), "tobs", tobs, "yobs", yobs, "σobs", σobs)
+    end
+
+    let 
+
+        tobs, yobs, σobs = tobs[[2;3;1]], yobs[[2;3;1]], σobs[[2;3;1]]
+
+        @printf("Trying out %d delay combinations in parallel\n", length(candidatedelays)^2)
+        
+        loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = maxiter, rhomax = 1000)[1]), candidatedelays), candidatedelays);
     
-    loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = maxiter, rhomax = 1000)[1]), candidatedelays), candidatedelays);
-  
 
-    filename = "results_synthetic_threelightcurves_joint.jld2"
+        filename = "results_synthetic_threelightcurves_joint_reordered.jld2"
 
-    @printf("Writing results in file %s\n", filename)
+        @printf("Writing results in file %s\n", filename)
 
-    JLD2.save(filename, "loglikel", loglikel, "candidatedelays", collect(candidatedelays), "tobs", tobs, "yobs", yobs, "σobs", σobs)
+        JLD2.save(filename, "loglikel", loglikel, "candidatedelays", collect(candidatedelays), "tobs", tobs, "yobs", yobs, "σobs", σobs)
+    end
 
 
-    return loglikel, candidatedelays, tobs, yobs, σobs
+    # return loglikel, candidatedelays, tobs, yobs, σobs
 
 end
 
@@ -37,7 +54,7 @@ function runme_pairwise(;maxiter=1)
 
     tobs, yobs, σobs = simulatedata(seed=1)
 
-    candidatedelays = 0.0:0.025:11
+    candidatedelays = -11:0.15:11
 
     
     @printf("Trying out %d delay combinations in parallel\n", length(candidatedelays))

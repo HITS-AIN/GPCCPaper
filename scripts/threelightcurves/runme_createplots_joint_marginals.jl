@@ -21,7 +21,7 @@ function createplots_joint_marginals()
     # load results #
     #--------------#
 
-    delays, loglikel = JLD2.load("three_lightcurves_joint.jld2", "candidatedelays", "loglikel")
+    delays, loglikel = JLD2.load("three_lightcurves_joint_123.jld2", "candidatedelays", "loglikel")
 
 
     #------------#
@@ -59,26 +59,21 @@ function createplots_joint_marginals()
 
     posterior23 = let
 
-        categorical12 = Categorical(posterior12)
-        categorical13 = Categorical(posterior13)
+        local delays, loglikel = JLD2.load("three_lightcurves_joint_231.jld2", "candidatedelays", "loglikel")
 
-        @printf("To get posterior delay between light curves 2 and 3 subtract delays τ12 from τ13, i.e. τ13-τ12\n")
+        local posterior = getprobabilities(reduce(vcat, loglikel))
+
+        posterior = reshape(posterior, length(delays), length(delays))
+
+        vec(sum(posterior,dims=2))
     
-        # generate samples of inbetween delay by subtracting samples of one from the other delay
-        samples = [(delays[rand(categorical13)] - delays[rand(categorical12)]) for _ in 1:1_000_000]
-        
-        # estimate density with kernel density estimation
-        marginal23 = kde(samples)
-
-        # discretise density and normalise on same grid of delays
-        vec(pdf(marginal23, delays) / sum(pdf(marginal23, delays)))
-
     end
 
     lines!(ax, delays, posterior12, linewidth=6, color=:red,    label= L"\textrm{ delay between 5100}\AA \textrm{ and 7700}\AA\textrm{, } \tau_2")
     lines!(ax, delays, posterior13, linewidth=6, color=:blue,   label= L"\textrm{ delay between 5100}\AA \textrm{ and 9100}\AA\textrm{, } \tau_3")
     lines!(ax, delays, posterior23, linewidth=6, color=:black,  label= L"\textrm{ delay between 7700}\AA \textrm{ and 9100}\AA")
 
+    
     
 
     #-----------------#

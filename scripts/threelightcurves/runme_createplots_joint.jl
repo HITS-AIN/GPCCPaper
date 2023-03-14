@@ -23,7 +23,7 @@ function createplots_joint()
     # load results #
     #--------------#
 
-    candidatedelays, loglikel = JLD2.load("three_lightcurves_joint.jld2", "candidatedelays", "loglikel")
+    candidatedelays, loglikel = JLD2.load("three_lightcurves_joint_123.jld2", "candidatedelays", "loglikel")
 
 
     #------------#

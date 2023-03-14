@@ -26,7 +26,7 @@ function createplots_joint()
     # load results #
     #--------------#
 
-    delays, loglikel_joint = JLD2.load("results_synthetic_threelightcurves_joint.jld2", "candidatedelays", "loglikel")
+    delays, loglikel_joint = JLD2.load("results_synthetic_threelightcurves_joint_reordered.jld2", "candidatedelays", "loglikel")
 
 
     #----------------------#
@@ -86,7 +86,7 @@ function createplots_joint()
     # Save figure in file #
     #---------------------#
 
-    filenamefig = "marginals_from_joint.png"
+    filenamefig = "marginals_from_joint_reordered.png"
 
     @printf("Saving figure in file %s\n", filenamefig)
 

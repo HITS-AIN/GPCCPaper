@@ -9,7 +9,7 @@ end
 using GPCCData, Printf, JLD2
 
 
-function run_threelightcurves_joint(; candidatedelays = collect(-10.0:0.1:10), iterations = 2000)
+function run_threelightcurves_joint(; iterations = 2000)
 
     lambda, tobs, yobs, σobs = let
 
@@ -27,6 +27,8 @@ function run_threelightcurves_joint(; candidatedelays = collect(-10.0:0.1:10), i
 
     let
 
+        candidatedelays = collect(0.0:0.1:10)
+
         loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = iterations, rhomax = 2000)[1]), candidatedelays), candidatedelays);
 
         filename = "three_lightcurves_joint_123.jld2"
@@ -40,9 +42,13 @@ function run_threelightcurves_joint(; candidatedelays = collect(-10.0:0.1:10), i
 
     # change order of light curves and run again
 
-    let
+    # new order is 9100, 5100, 7700
 
-        idx = [2, 3, 1]
+    let
+        
+        candidatedelays = collect(-10.0:0.1:0),
+
+        idx = [3, 1, 2]
 
         lambda, tobs, yobs, σobs  = lambda[idx], tobs[idx], yobs[idx], σobs[idx]
 
@@ -50,7 +56,7 @@ function run_threelightcurves_joint(; candidatedelays = collect(-10.0:0.1:10), i
 
         loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = iterations, rhomax = 2000)[1]), candidatedelays), candidatedelays);
 
-        filename = "three_lightcurves_joint_231.jld2"
+        filename = "three_lightcurves_joint_312.jld2"
 
         @printf("Saving results in file %s\n", filename)
 
@@ -61,9 +67,9 @@ function run_threelightcurves_joint(; candidatedelays = collect(-10.0:0.1:10), i
 end
 
 ## Warmup
-run_threelightcurves_joint(candidatedelays = collect(LinRange(0, 10, nworkers())), iterations = 2)
+run_threelightcurves_joint(iterations = 2)
 
-run_threelightcurves_joint(candidatedelays = collect(LinRange(0, 10, nworkers())), iterations = 2)
+run_threelightcurves_joint(iterations = 2)
 
 ## Proper run
 run_threelightcurves_joint()
