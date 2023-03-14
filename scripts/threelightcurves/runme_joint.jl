@@ -46,7 +46,7 @@ function run_threelightcurves_joint(; iterations = 2000)
 
     let
         
-        candidatedelays = collect(-10.0:0.1:0),
+        candidatedelays = collect(-10.0:0.1:0)
 
         idx = [3, 1, 2]
 
