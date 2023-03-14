@@ -37,7 +37,7 @@ function run_threelightcurves_joint(; candidatedelays = collect(0.0:0.1:10), ite
 
     end
 
-    
+
     # change order of light curves and run again
 
     let
@@ -46,7 +46,7 @@ function run_threelightcurves_joint(; candidatedelays = collect(0.0:0.1:10), ite
 
         lambda, tobs, yobs, σobs  = lambda[idx], tobs[idx], yobs[idx], σobs[idx]
 
-        @printf("Using the following wavelengths in the order:\n"); display(lambda[idx])
+        @printf("Using the following wavelengths in the order:\n"); display(lambda)
 
         loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = iterations, rhomax = 2000)[1]), candidatedelays), candidatedelays);
 
