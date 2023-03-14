@@ -29,7 +29,28 @@ function run_threelightcurves_joint(; candidatedelays = collect(0.0:0.1:10), ite
 
         loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = iterations, rhomax = 2000)[1]), candidatedelays), candidatedelays);
 
-        filename = "three_lightcurves_joint.jld2"
+        filename = "three_lightcurves_joint_123.jld2"
+
+        @printf("Saving results in file %s\n", filename)
+
+        JLD2.save(filename, "candidatedelays", candidatedelays, "loglikel", loglikel)
+
+    end
+
+    
+    # change order of light curves and run again
+
+    let
+
+        idx = [2, 3, 1]
+
+        lambda, tobs, yobs, σobs  = lambda[idx], tobs[idx], yobs[idx], σobs[idx]
+
+        @printf("Using the following wavelengths in the order:\n"); display(lambda[idx])
+
+        loglikel = @showprogress pmap(d2 -> map(d1 -> (@suppress gpcc(tobs, yobs, σobs; kernel = GPCC.matern32, delays = [0;d1;d2], iterations = iterations, rhomax = 2000)[1]), candidatedelays), candidatedelays);
+
+        filename = "three_lightcurves_joint_231.jld2"
 
         @printf("Saving results in file %s\n", filename)
 

@@ -9,7 +9,7 @@ end
 using GPCCData, Printf, JLD2
 
 
-function run_threelightcurves_pairwise(; candidatedelays = collect(0.0:0.01:10), iterations = 2000)
+function run_threelightcurves_pairwise(; candidatedelays = collect(0.0:0.1:10), iterations = 2000)
 
     lambda, tobs, yobs, σobs = let
 
@@ -43,8 +43,8 @@ function run_threelightcurves_pairwise(; candidatedelays = collect(0.0:0.01:10),
 end
 
 ## Warmup
-run_threelightcurves_pairwise(candidatedelays = collect(LinRange(0, 10, nworkers())), iterations = 2)
-run_threelightcurves_pairwise(candidatedelays = collect(LinRange(0, 10, nworkers())), iterations = 2)
+run_threelightcurves_pairwise(candidatedelays = collect(LinRange(0, 10, 1+nworkers())), iterations = 2)
+run_threelightcurves_pairwise(candidatedelays = collect(LinRange(0, 10, 1+nworkers())), iterations = 2)
 
 ## Proper run
 run_threelightcurves_pairwise()
