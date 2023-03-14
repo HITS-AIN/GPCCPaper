@@ -37,8 +37,8 @@ function createplots_pairwise()
         ax.xticks = 0:0.5:10
         ax.yticks = 0.05:0.05:0.15
     
-        GLMakie.lines!(ax, delays, posterior12, linewidth=6, color=:red,  label= L"\textrm{ delay between 5100}\AA \textrm{ and 7700}\AA\textrm{, } \tau_2")
-        GLMakie.lines!(ax, delays, posterior13, linewidth=6, color=:blue, label= L"\textrm{ delay between 5100}\AA \textrm{ and 9100}\AA\textrm{, } \tau_3")
+        GLMakie.lines!(ax, delays, posterior12, linewidth=6, color=:red,  label= L"\textrm{ delay between 5100}\AA \textrm{ and 7700}\AA")
+        GLMakie.lines!(ax, delays, posterior13, linewidth=6, color=:blue, label= L"\textrm{ delay between 5100}\AA \textrm{ and 9100}\AA")
         GLMakie.lines!(ax, delays, posterior23, linewidth=6, color=:black,label= L"\textrm{ delay between 7700}\AA \textrm{ and 9100}\AA")
     
         #---------------------------------------------------#
@@ -78,7 +78,7 @@ function createplots_pairwise()
         #----------------------------#
  
         xlims!(ax, 0, 10.2)
-        ylims!(ax, 0, 0.182)
+        ylims!(ax, 0, 0.2)
 
         axislegend(framevisible = false)
         

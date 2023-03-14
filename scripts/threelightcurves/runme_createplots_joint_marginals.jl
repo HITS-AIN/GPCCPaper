@@ -29,7 +29,7 @@ function createplots_joint_marginals()
     #------------#
 
 
-    ax = Axis(fig[1, 1], title = "posteriors from joint estimation", xlabel = L"\tau\:\textrm{(days)}", ylabel = L"\mathbf{\pi}_i", xticklabelsize = 40, ylabelsize = 50)
+    ax = Axis(fig[1, 1], title = "marginals from joint estimation", xlabel = L"\tau\:\textrm{(days)}", ylabel = L"\mathbf{\pi}_i", xticklabelsize = 40, ylabelsize = 50)
         
     ax.xticks = 0:0.5:10
     ax.yticks = 0.05:0.05:0.15
@@ -59,18 +59,20 @@ function createplots_joint_marginals()
 
     posterior23 = let
 
-        local delays, loglikel = JLD2.load("three_lightcurves_joint_231.jld2", "candidatedelays", "loglikel")
+        local delays, loglikel = JLD2.load("three_lightcurves_joint_312.jld2", "candidatedelays", "loglikel")
 
         local posterior = getprobabilities(reduce(vcat, loglikel))
 
         posterior = reshape(posterior, length(delays), length(delays))
 
-        vec(sum(posterior,dims=2))
+        posterior32 = reverse(vec(sum(posterior,dims=1)))
+
+        posterior32
     
     end
 
-    lines!(ax, delays, posterior12, linewidth=6, color=:red,    label= L"\textrm{ delay between 5100}\AA \textrm{ and 7700}\AA\textrm{, } \tau_2")
-    lines!(ax, delays, posterior13, linewidth=6, color=:blue,   label= L"\textrm{ delay between 5100}\AA \textrm{ and 9100}\AA\textrm{, } \tau_3")
+    lines!(ax, delays, posterior12, linewidth=6, color=:red,    label= L"\textrm{ delay between 5100}\AA \textrm{ and 7700}\AA")
+    lines!(ax, delays, posterior13, linewidth=6, color=:blue,   label= L"\textrm{ delay between 5100}\AA \textrm{ and 9100}\AA")
     lines!(ax, delays, posterior23, linewidth=6, color=:black,  label= L"\textrm{ delay between 7700}\AA \textrm{ and 9100}\AA")
 
     
@@ -81,17 +83,17 @@ function createplots_joint_marginals()
     #-----------------#
 
     μ12 = sum(posterior12 .* delays)
-    σ12 = sum((delays .- μ12).^2 .* posterior12)
+    σ12 = sqrt(sum((delays .- μ12).^2 .* posterior12))
     
     @printf("Mean and std delay between 1st and 2nd light curve is \t %.3f\t %.3f\n", μ12, σ12)
 
     μ13 = sum(posterior13 .* delays)
-    σ13 = sum((delays .- μ13).^2 .* posterior13)
+    σ13 = sqrt(sum((delays .- μ13).^2 .* posterior13))
 
     @printf("Mean and std delay between 1st and 3rd light curve is \t %.3f\t %.3f\n", μ13, σ13)
 
     μ23 = sum(posterior23 .* delays)
-    σ23 = sum((delays .- μ23).^2 .* posterior23)
+    σ23 = sqrt(sum((delays .- μ23).^2 .* posterior23))
 
     @printf("Mean and std delay between 2nd and 3rd light curve is \t %.3f\t %.3f\n", μ23, σ23)
 
@@ -115,7 +117,7 @@ function createplots_joint_marginals()
     #----------------------------#
 
     xlims!(ax, 0, 10.2)
-    ylims!(ax, 0, 0.182)
+    ylims!(ax, 0, 0.2)
 
     axislegend(framevisible = false)
 
