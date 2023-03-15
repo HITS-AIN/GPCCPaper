@@ -2,14 +2,12 @@
 
 This directory contains code that reproduces the results and plots for the synthetic simulations.
 
-The code reproduces the following  plot:
+The code reproduces the following plots:
 
-
-<p align="center">
-
-<img src="https://github.com/HITS-AIN/GPCCPaper/blob/40374013f67025aff7c04371b4ab6ebbb1dcb398/scripts/threelightcurves/2Dposterior_Mgc0811.png"  style="width:500px;height:500px;">
-
-</p>
+![Mgc0811_joint_posterior_5100](2Dposterior_Mgc0811.png)
+![Mgc0811_joint_posterior_9100](2Dposterior_Mgc0811_reorder.png)
+![Mgc0811_joint_posterior_marginals](marginals_from_joint_posterior_Mgc0811.png)
+![Mgc0811_pairwise](pairwise_delays_Mgc0811.png)
 
 ### Installing relevant packages
 
@@ -28,7 +26,8 @@ The scripts below should take care of  computing the results and creating plots.
 
 By simply using in the julia REPL:
 ```
-include("runme.jl")
+include("runme_joint.jl") # calculates joint posterior delay
+include("runme_pairwise.jl") # calculates pairwise delays
 ```
 you will compute all the posterior delay distributions. 
 The results will be saved in files that use the JLD2 format.
@@ -38,8 +37,9 @@ The results will be saved in files that use the JLD2 format.
 
 Once the results have been computed and saved, by using in the julia REPL:
 ```
-include("runme_createplots.jl")
+include("runme_createplots_joint.jl")           # joint posterior plot with respect to light curve at 5100
+include("runme_createplots_joint_reorder.jl")   # joint posterior plot with respect to light curve at 9100
+include("runme_createplots_joint_marginals.jl") # plot of marginals calculated from joint posterior
+include("runme_createplots_pairwise.jl")        # plot of delays estimated in pairwise manner
 ```
-it should be possible to recreate the plot that shows the posterior delay distributions in the paper.
-
-The values of the candidate delays and the values of the joint posterior are saved in CSV files.
+it should be possible to recreate the plots that shows the posterior delay distributions in the paper.
