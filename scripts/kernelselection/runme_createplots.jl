@@ -43,7 +43,7 @@ function createplots()
 
     fig = GLMakie.Figure(resolution = resolution, fontsize = fontsize)
    
-    ax1 = Axis(fig[1,1], xlabel = L"\tau\:\textrm{(days)}", ylabel = "CV log-likelihood")
+    ax1 = Axis(fig[1,1], xlabel = L"\tau\:\textrm{(days)}", ylabel = "CV log-likelihood", xgridvisible = false, ygridvisible = false)
 
 
     # plot data
@@ -100,7 +100,7 @@ function createplots()
 
     fig = GLMakie.Figure(resolution = resolution, fontsize = fontsize)
    
-    ax1 = Axis(fig[1,1], xlabel = L"\tau\:\textrm{(days)}", ylabel = "CV log-likelihood")
+    ax1 = Axis(fig[1,1], xlabel = L"\tau\:\textrm{(days)}", ylabel = "CV log-likelihood", xgridvisible = false, ygridvisible = false)
 
 
     # plot data
