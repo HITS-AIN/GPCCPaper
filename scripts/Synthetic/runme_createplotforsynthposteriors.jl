@@ -27,7 +27,7 @@ function createplotforsynthposteriors()
         
         tobs, yobs, __σobs__UNUSED = simulatetwolightcurves(σ=σ)
         
-        ax1 = Axis(GL[index, 1], xlabel = "Time (days)", ylabel = "Flux (arbitrary units)", xticklabelsize = 28, ylabelsize = 30)
+        ax1 = Axis(GL[index, 1], xlabel = "Time (days)", ylabel = "Flux (arbitrary units)", xticklabelsize = 28, ylabelsize = 30, xgridvisible = false, ygridvisible = false)
         
         GLMakie.scatter!(ax1, tobs[1], yobs[1], color=:blue, markersize=18)
         
@@ -43,7 +43,7 @@ function createplotforsynthposteriors()
         
         results, delays = JLD2.load(filename, "loglikel", "delays")
         
-        ax2 = GLMakie.Axis(GL[index, 2], xlabel = L"\tau\:\textrm{(days)}", ylabel = L"\mathbf{\pi}_i", xticklabelsize = 28, ylabelsize = 44)
+        ax2 = GLMakie.Axis(GL[index, 2], xlabel = L"\tau\:\textrm{(days)}", ylabel = L"\mathbf{\pi}_i", xticklabelsize = 28, ylabelsize = 44, xgridvisible = false, ygridvisible = false)
         
         GLMakie.lines!(ax2, delays, getprobabilities(results), linewidth=4, color=:black)
 
