@@ -32,17 +32,17 @@ function createplots_joint()
 
     @printf("\t Restricting delay axes in interval 0-10\n")
    
-    axtop   = Axis(GL[1, 1], title  = L"\textrm{marginal delay between 5100}\AA \textrm{ and 9100}\AA",  xlabel = "delay (days)", ylabel = L"\pi_i")
+    axtop   = Axis(GL[1, 1], title  = L"\textrm{marginal delay between 5100}\AA \textrm{ and 9100}\AA",  xlabel = "delay (days)", ylabel = L"\pi_i", xgridvisible = false, ygridvisible = false)
     xlims!(axtop, 0, 10)
     axtop.xticks = 0:2:10
    
-    axmain  = Axis(GL[2, 1], title = "joint posterior", xlabel = L"\textrm{delay between 5100}\AA \textrm{ and 9100}\AA", ylabel = L"\textrm{delay between 5100}\AA\textrm{ and 7700}\AA")
+    axmain  = Axis(GL[2, 1], title = "joint posterior", xlabel = L"\textrm{delay between 5100}\AA \textrm{ and 9100}\AA", ylabel = L"\textrm{delay between 5100}\AA\textrm{ and 7700}\AA", xgridvisible = false, ygridvisible = false)
     xlims!(axmain, 0, 10)
     ylims!(axmain, 0, 10)
     axmain.yticks = 0:2:10
     axmain.xticks = 0:2:10
    
-    axright = Axis(GL[2, 2], title  = L"\textrm{marginal delay between 5100}\AA\textrm{ and 7700}\AA", ylabel = "delay (days)", xlabel = L"\pi_i")
+    axright = Axis(GL[2, 2], title  = L"\textrm{marginal delay between 5100}\AA\textrm{ and 7700}\AA", ylabel = "delay (days)", xlabel = L"\pi_i", xgridvisible = false, ygridvisible = false)
     ylims!(axright, 0, 10)
     axright.xticks = 0:0.05:0.1
     axright.yticks = 0:2:10

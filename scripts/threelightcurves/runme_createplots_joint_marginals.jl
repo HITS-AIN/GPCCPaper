@@ -29,7 +29,7 @@ function createplots_joint_marginals()
     #------------#
 
 
-    ax = Axis(fig[1, 1], title = "marginals from joint estimation", xlabel = L"\tau\:\textrm{(days)}", ylabel = L"\mathbf{\pi}_i", xticklabelsize = 40, ylabelsize = 50)
+    ax = Axis(fig[1, 1], title = "marginals from joint estimation", xlabel = L"\tau\:\textrm{(days)}", ylabel = L"\mathbf{\pi}_i", xticklabelsize = 40, ylabelsize = 50, xgridvisible = false, ygridvisible = false)
         
     ax.xticks = 0:0.5:10
     ax.yticks = 0.05:0.05:0.15
