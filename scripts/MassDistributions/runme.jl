@@ -83,7 +83,7 @@ function runme(; source = source, σvdensity = σvdensity, reported_density = re
         title = fixdelaytomean ? @sprintf("Mass distribution for %s with delay fixed to mean", source) :
                                  @sprintf("Mass distribution for %s", source)
 
-        @show highestpower = prevpow(10, minimum(samples))
+        @show highestpower = prevpow(10, minimum(samples)) # try also nextpow if axis doesn't show properly
 
         function customxtick(values)
             map(values) do v
@@ -95,7 +95,7 @@ function runme(; source = source, σvdensity = σvdensity, reported_density = re
 
         powerstr = @sprintf("%d", round(Int, log10(highestpower)))
 
-        ax = Axis(fig[1,1], xlabel = L"M_{BH}(M_\odot)\times 10^%$powerstr", ylabel = "density", title = "", xticks = myxticks, xtickformat = customxtick, yticklabelsize = 26, yticklabelsvisible = true)
+        ax = Axis(fig[1,1], xlabel = L"M_{BH}(M_\odot)\times 10^%$powerstr", ylabel = "density", title = "", xticks = myxticks, xtickformat = customxtick, yticklabelsize = 26, yticklabelsvisible = true,xgridvisible = false, ygridvisible = false)
 
         GLMakie.hist!(ax, samples, bins = 250, normalization = :pdf, color = :gray, label="our estimate")
 
