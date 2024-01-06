@@ -20,6 +20,6 @@ By simply using in the julia REPL:
 ```
 include("runme.jl")
 ```
-the relevant will be produced and saved as PNG files. Also the samples of drawn to construct our grey histograms will be saved as CSV files.
+the relevant plots will be produced and saved as PNG files. Also the samples of drawn to construct our grey histograms will be saved as CSV files.
 
 
