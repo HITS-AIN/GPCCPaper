@@ -1,5 +1,8 @@
 # GPCCPaper
 
+❗Following the recent update [GPCC.jl](https://github.com/HITS-AIN/GPCC.jl), the instructions below are no longer up to date❗
+An update will follow in the new next few days.
+
 ## ℹ What is this?
 
 This repository contains scripts for reproducing all the results presented in 
