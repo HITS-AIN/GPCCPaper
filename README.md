@@ -1,7 +1,7 @@
 # GPCCPaper
 
-❗Following the recent update [GPCC.jl](https://github.com/HITS-AIN/GPCC.jl), the instructions below are no longer up to date❗
-An update will follow in the new next few days.
+❗Following the recent updated [GPCC.jl](https://github.com/HITS-AIN/GPCC.jl), the instructions below are no longer up to date❗
+An update will follow soon.
 
 ## ℹ What is this?
 
